@@ -49,7 +49,11 @@ function BinToDex(b){
  * @return {String}
  */
 function DexToFillBin(d,count){
+    if(typeof d == "string"){
+        d = parseInt(d,10);
+    }
     var b = d.toString(2);
+    
     var length = b.length;
     if (length>count){
         b = b.substring(0,count);

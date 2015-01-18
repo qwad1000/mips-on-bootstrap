@@ -16,7 +16,7 @@ function initRamHolder() {
     };
     ramHolder.isClear = function () {
         return this.ramMap.length == 0;
-    }
+    };
     return ramHolder;
 }
 
@@ -67,7 +67,7 @@ function initCommandRamHolder() {
     };
     commandRamHolder.getCurrentPC = function () {
         return this.PC - 1;
-    }
+    };
     return commandRamHolder;
 }
 
@@ -168,8 +168,7 @@ function convertTSImm(splitedCode) {
         + DexToFillBin(parseInt(splitedCode[3]), 16);
 }
 
-function convertDST(splitedCode) { //bugfix
-    console.log(splitedCode);
+function convertDST(splitedCode) {
     return DexToFillBin(getRegisterCode(splitedCode[2]), 5) + DexToFillBin(getRegisterCode(splitedCode[3]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5);
 }
 
@@ -191,7 +190,7 @@ function convertTarget(splitedCode) {
 
 function convertTOffS(splitedCode) {
     var offS = splitedCode[2];
-    var offSArr = offS.split("(");
+    var offSArr = offS.split("("); 
     offSArr[1] = offSArr[1].substring(0, offSArr[1].length - 1);
     return DexToFillBin(getRegisterCode(offSArr[1]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(offSArr[0], 16);
 }
@@ -548,12 +547,18 @@ function initHardArray() {
         registerHolder.set(values[1], registerHolder.get(values[0]) ^ values[2]);
     };
     //sw
-    arr['101011'] = function (b, registerHolder, ramHolder, commandRamHolder) {
-        var values = getSTImm(b);
-        ramHolder.setDex(values[1], values[2]);
+    arr['101011'] = function (b,registerHolder, ramHolder, commandRamHolder){
+          var values = getTOffS(b);
+          ramHolder.setDex(values[2]+registerHolder.get(values[1]),
+            registerHolder.get(values[0]));
+          /*ramHolder.setDex(registerHolder.get(values[0])+values[2], 
+            registerHolder.get(values[1]));*/
     };
-
-
+    //lw
+    arr['100011'] = function (b,registerHolder, ramHolder, commandRamHolder) {
+        var values = getTOffS(b);
+        registerHolder.set(values[0],ramHolder.getDex(values[2]+registerHolder.get(values[1])));
+    };
     return arr;
 }
 
@@ -566,6 +571,13 @@ function getDST(b) {
     return [BinToDex(b.substring(16, 21)), BinToDex(b.substring(6, 11)), BinToDex(b.substring(11, 16))];
 }
 
+/**
+ * @param {String} b
+ * @returns {*[]} T,S,Offset
+ */
+function getTOffS(b){
+    return [BinToDex(b.substring(11,16)),BinToDex(b.substring(6,11)),BinToDex(b.substring(16))];
+}
 /**
  *
  * @param {String} b
@@ -593,6 +605,8 @@ function getSTImm(b) {
 }
 
 //endregion
+
+
 
 
 

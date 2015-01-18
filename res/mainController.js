@@ -79,13 +79,14 @@ function testController($scope) {
 		$scope.commandsCount = 0;
 		console.log("состояние регистров под конец работы:");
 		console.log(demoCPU.register.registerMap);
+		console.log(demoCPU.ram.ramMap);
 	}
 	
 	$scope.runStep = function () {
 		if($scope.commandsCount>0){
 			demoCPU.nextCommand();
 			editor.session.clearBreakpoints();
-			var rows = editor.session.getLength();
+			var rows = editor.session.getLength(); //fixme: indexes may be wrong if delete empty rows in ediotr
 			editor.session.setBreakpoint(rows - $scope.commandsCount);
 			$scope.commandsCount--;
 		}

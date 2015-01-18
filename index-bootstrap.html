@@ -79,8 +79,8 @@ sw $t4 2($t2)
 						</thead>
 						<tbody>
 							<tr ng-repeat="val in ram.ramMap track by $index" ng-show="val!=undefined"> <!-- КОСТЫЛЬ!!!-->
-								<td>{{val}}</td>
-								<td>{{$index}}</td>
+								<td>0x{{$index.toString(16)}}</td>
+								<td>{{val.toString(16)}}</td>
 							</tr> 
 						</tbody>
 					</table>

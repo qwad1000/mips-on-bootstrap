@@ -30,7 +30,7 @@ ace.define('ace/mode/mips_highlight_rules', function(require, exports, module) {
                 "mfhi mflo mult multu noop or ori sb sll sllv slt sltu slti sltiu sra srl srlv sub subu sw xor xori"
         }, "text", true, " ");
 
-        var compoundKeywords = "\\$([1-2]?[0-9]|30|31|t[0-9]|s[0-8]|ra|zero|at|v[0-1]|a[0-3]|k0|k1|gp|sp)";
+        var compoundKeywords = "\\$(30|31|[1-2]?[0-9]|t[0-9]|s[0-8]|ra|zero|at|v[0-1]|a[0-3]|k0|k1|gp|sp)";
 
         this.$rules = {
             "start": [
