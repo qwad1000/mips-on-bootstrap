@@ -1,0 +1,36 @@
+.code-editor{
+	/*float: inherit;*/
+	font-size:.9em;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	border:1px solid #ddd;
+	border-radius:3px;
+	height: 100%;
+}
+.editor-wrapper{
+	height: 300px;
+	width: 100%;
+	border-radius: 3px;
+	border-style: solid;
+}
+.result-area{
+	width: 100%;
+	border-radius: 3px;
+	border-style: solid;
+	border-color: black;
+}
+.column {
+	border-radius: 5px;
+}
+
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td{
+    padding: 0px;
+}
+
+.table-wrapper{
+	max-width: 100%;
+}
+.register-input {
+	padding: 0px;
+	margin: 0px;
+	max-width: 80%
+}

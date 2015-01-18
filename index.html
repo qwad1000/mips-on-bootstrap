@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>MIPSjs emulator</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="css/ide.css">
+</head>
+<body ng-app="" ng-controller="testController">
+<div class="page-wrap">
+    <header class="page-header">
+        <b>MIPS Emulator</b>
+    </header>
+    <section class="columns-wrapper">
+        <div class="left-column">
+            <div id="editor-wrapper">
+                <code id="editor" ng-model="codeArea">
+                    add $t1 $t2 $t3
+                    addi $t1 $t2 0xABC
+                    #Test
+                    label: mfhi $t1
+                </code>
+            </div>
+            <div id="button-div" >
+                <button id="step-button" >Step</button>
+                <button id="run-button" ng-click="runConvert()">Run</button>
+                <input id="stop-button" type="button" value="Stop"/>
+            </div>
+            <p ng-model="resultArea"></p>
+        </div>
+
+        <div class="right-column">
+            <div id="registers">
+                <table id="registers_table"></table>
+            </div>
+            <div id="memory"><p>asdf</p></div>
+        </div>
+    </section>
+    <footer class="page-footer">
+        <p>qwad1000</p>
+    </footer>
+
+</div>
+
+
+<script src="res/src-min/ace.js"></script>
+<script src="res/example.js"></script>
+<script src="res/emulator/controller.js"></script>
+
+<script type="text/javascript" src="res/emulator/mips_constants.js"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/mips");
+    create_registers_table();
+
+    function create_registers_table() {
+        var table = document.getElementById("registers_table");
+        //var header = table.createTHead();
+        var header_row = table.insertRow(0);
+        for(var i= 0; i<4; i++){
+            var cell1 = header_row.insertCell(2*i);
+            cell1.innerHTML = "Регістр";
+
+
+            var cell2 = header_row.insertCell(2*i+1);
+            cell2.innerHTML = "Значення";
+        }
+
+        for(var i=0; i<registersName.length/4; i++){
+            var curr_row = table.insertRow()
+            for(var j=0; j<4; j++) {
+                var name = registersName[i*4 + j];
+                curr_row.insertCell(2*j).innerHTML = '$' + name;
+
+                var regcell = curr_row.insertCell(2*j+1);
+                var id = "register_" + name;
+                regcell.setAttribute("id", id);
+                regcell.setAttribute("contenteditable", "true");
+                regcell.innerHTML = "0";
+            }
+
+        }
+    }
+</script>
+</body>
+</html>
+
+
