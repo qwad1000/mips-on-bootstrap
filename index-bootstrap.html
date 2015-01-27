@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="MIPS-app">
 <head>
 	<meta charset="UTF-8"/>
 	<title>MIPS page</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>-->
+	<script src="res/angular.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+	<link rel="stylesheet" type="text/css" href="res/bootstrap.min.css">
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+	<script src="res/jquery-1.11.2.min.js"></script>
 </head>
 
 <body ng-controller="testController">
@@ -105,6 +108,7 @@ sw $t4 2($t2)
 		var editor = ace.edit("editor");
 		editor.setTheme("ace/theme/twilight");
 		editor.getSession().setMode("ace/mode/mips");
+		editor.
 	</script>
 
 	<style type="text/css">

@@ -1,4 +1,7 @@
-function testController($scope) {
+var app = angular.module("MIPS-app",[]);
+
+
+app.controller ("testController" , function($scope) {
 	var demoCPU = initDemoCPU();
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
@@ -96,4 +99,4 @@ function testController($scope) {
 	}
 
 
-}
+});
