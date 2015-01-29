@@ -11,9 +11,13 @@ app.controller ("testController" , function($scope) {
 	$scope.loadBtnText = "Assemble & Load to CPU";
 	$scope.ram = demoCPU.ram;
 	$scope.hexRegFmt = 'hex';
+	$scope.memoryShift = 0x12;
+
+	demoCPU.ram.setDex(0x14, 12);
 
 	$scope.commandsCount = -1;
 	$scope.dividedRegisters = prepareRegistersTable(2, $scope.registers, $scope.registersName);
+	$scope.memoryShifts = prepareMemoryTable(0x10,17	,8);
 
 	function prepareRegistersTable(columns, arr, names){
 		var newArr = [];
@@ -36,6 +40,42 @@ app.controller ("testController" , function($scope) {
 			return "0x" + $scope.registers[index].toString(16).toUpperCase();		
 		}
 		return $scope.registers[index];
+	}
+
+	function prepareMemoryTable(shift, rows, cols){
+		if(typeof shift == 'string'){
+			shift = parseInt(shift)
+		}
+		var arr = [];
+		for(var i=0; i<rows; i++){
+			var arr2 = [];
+			for(var j=0; j<cols; j++){
+				// var v = $scope.ram.ramMap[shift + i*cols + j];
+				// if(typeof v == 'undefined'){
+				// 	v = 0;					
+				// }
+				var num = shift + i*cols + j;
+				arr2.push(num);
+			}
+			arr.push(arr2);
+		}
+		return arr;
+	}
+
+	$scope.returnMemoryValue = function (index, fmt){
+		//fixme ???
+		var m = $scope.ram.ramMap[index];
+		if(typeof m == 'undefined'){
+			m = 0;
+		}
+		if(fmt == 'hex'){
+			m = m.toString(16).toUpperCase();
+		}
+		return m;
+	}
+
+	$scope.changeMemoryShift = function(){
+		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,8,8);
 	}
 
 	$scope.loadInfo = function (){
@@ -96,7 +136,8 @@ app.controller ("testController" , function($scope) {
 	}
 	$scope.reset = function (){//todo
 		demoCPU.ram.setDex(123, 234);
+		var r = $scope.returnMemoryBlock(115, 12,12);
+		console.log('asdf');
 	}
-
 
 });

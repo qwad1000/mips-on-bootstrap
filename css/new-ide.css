@@ -29,6 +29,12 @@
 .table-wrapper{
 	max-width: 100%;
 }
+.table-wrapper > table>tbody>tr>th, .table-wrapper > table>thead>tr>th {
+	text-align: center;
+}
+.memory-cell{
+	text-align: center;
+}
 .register-input {
 	padding: 0px;
 	margin: 0px;
