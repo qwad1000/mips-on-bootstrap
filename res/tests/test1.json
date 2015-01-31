@@ -1,0 +1,19 @@
+{
+	"id": 0,
+	"title":"Some exercise",
+	"exercise":"store some value into a memory",
+	"tests":[
+		{
+			"id": 0, 
+			"title":"Test1",
+			"start": [
+				{"t1":123},
+				{"t2":155}
+			],
+			"end": [
+				{"t1": 123},
+				{"t2": 128}
+			]
+		}
+	]
+}

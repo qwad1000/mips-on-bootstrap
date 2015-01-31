@@ -3,6 +3,8 @@ var app = angular.module("MIPS-app",[]);
 var editor = ace.edit("editor");
 //editor.setTheme("ace/theme/twilight");
 editor.getSession().setMode("ace/mode/mips");
+editor.setValue("addi $t1 $zero 0x14\naddi $t2 $zero 0x20\nsw $t2 0($t1)");
+editor.gotoLine(0);
 
 app.config(function($interpolateProvider) {
 	    $interpolateProvider.startSymbol('[$');
@@ -13,15 +15,14 @@ app.controller ("testController" , function($scope) {
 	var demoCPU = initDemoCPU();
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
+	$scope.ram = demoCPU.ram;
 	$scope.registersName = registersName;
 	$scope.resultArea = "";
 	$scope.isEditing = true;
 	$scope.loadBtnText = "Assemble & Load to CPU";
-	$scope.ram = demoCPU.ram;
+	
 	$scope.hexRegFmt = 'hex';
 	$scope.memoryShift = 0x12;
-
-	demoCPU.ram.setDex(0x14, 12);
 
 	$scope.commandsCount = -1;
 	$scope.dividedRegisters = prepareRegistersTable(2, $scope.registers, $scope.registersName);
@@ -147,8 +148,53 @@ app.controller ("testController" , function($scope) {
 		}
 	}
 	$scope.reset = function (){//todo
-		demoCPU.ram.setDex(123, 234);
-		console.log('asdf');
+		demoCPU = {};
+		demoCPU = initDemoCPU();
+		editor.session.clearBreakpoints();
+		$scope.registers = demoCPU.register.registerMap;
+		$scope.ram = demoCPU.ram;
+		$scope.isEditing = true; //crunch;
+		$scope.commandsCount = -1;
+		$scope.loadInfo();
+
+		console.log('mips cpu reseted');
 	}
 
+
+var jsonTestText = '{\n"id": 0,\n'+
+	'"title":"Some exercise",\n'+
+	'"exercise":"store some value into a memory",\n'+
+	'"tests":[{"id": 0, "title":"Test1","start": [{"t1":123},{"t2":155}],"end": [{"t1": 123},{"t2": 128}]},'+
+	'{"id": 1, "title":"Test2","start": [{"t1":12},{"t2":13}],"end": [{"t1": 2},{"t2": 2}]}'+
+	']}'
+
+	$scope.exercise = JSON.parse(jsonTestText);
+
+	$scope.testClick = function (id){
+		$scope.reset();
+		var test = $scope.exercise.tests[id];
+		var k = Object.keys(test.start);
+		angular.forEach(test.start, function (item, i, arr){
+			var key = Object.keys(item)[0];
+			var code = registerCode[key];
+			var val = item[key];
+			demoCPU.register.set(code, val);
+		});
+
+		$scope.runConvert();
+
+		var testPassed = true;
+
+		angular.forEach(test.end, function (item, i, arr){
+			var key = Object.keys(item)[0];
+			var code = registerCode[key];
+			var val = item[key];
+			var currentVal = demoCPU.register.get(code);
+			if(currentVal != val){
+				testPassed = false;
+			}
+		});
+
+		test.passed = testPassed;//todo
+	}
 });
