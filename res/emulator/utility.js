@@ -103,3 +103,12 @@ function BinToViewBin(b){
 function integerDivision(x,y){
     return x/y>>0;
 }
+
+function HexToFillHex(h, length){ //test
+    var hlength = h.length;
+    var concatStr = "";
+    for(var i=0; i<length - hlength; i++){
+        concatStr = concatStr + "0";
+    }
+    return concatStr + h;
+}

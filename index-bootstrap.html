@@ -16,7 +16,7 @@
 	<div class="page-wrapper container-fluid">
 		<div class="row main-part-wrapper">
 			<div class="col-sm-4 column">
-				<button type="button" class="btn btn-success btn-block btn-sm" ng-click="loadInfo()">{{ loadBtnText }}</button>
+				<button type="button" class="btn btn-success btn-block btn-sm" ng-click="loadInfo()">[$ loadBtnText $]</button>
 				<div class="editor-wrapper">
 					<div id="editor" class="code-editor" ng-model="codeArea">
 addi $t1 $zero 0x14
@@ -50,10 +50,10 @@ sw $t2 0($t1)
 							</tr>
 
 							<tr ng-repeat="row in dividedRegisters track by $index">
-								<td>r{{ row[0].indx }}/{{ row[0].name }}</td>
-								<td>{{ returnRegister(row[0].indx, hexRegFmt) }}</td>
-								<td>r{{ row[1].indx }}/{{ row[1].name }}</td>
-								<td>{{ returnRegister(row[1].indx, hexRegFmt) }}</td>
+								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>
+								<td>[$ returnRegister(row[0].indx, hexRegFmt) $]</td>
+								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>
+								<td>[$ returnRegister(row[1].indx, hexRegFmt) $]</td>
 							</tr>
 						</tbody>
 					</table>
@@ -78,15 +78,16 @@ sw $t2 0($t1)
 							<tr>
 							<th> </th>
 							<th class="info" ng-repeat="num in [0,1,2,3,4,5,6,7]">
-								{{num}}
+								[$num$]
 							</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]">
-								<th class="info">{{ memoryShift + num*8 }}</th><!--todo: 8 -> cols-->
+								<th class="info">[$ "0x" + (memoryShift + num*8).toString(16).toUpperCase() $]</th>
+								<!--todo: 8 -> cols-->
 								<td class="memory-cell" ng-repeat="inf in [0,1,2,3,4,5,6,7]">
-									{{ returnMemoryValue(memoryShifts[num][inf],hexRegFmt) }}
+									[$ returnMemoryValue(memoryShifts[num][inf],hexRegFmt) $]
 								</td>
 							</tr>
 						</tbody>
@@ -113,11 +114,6 @@ sw $t2 0($t1)
 
 	<script src="res/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="res/example.js"></script>
-	<script type="text/javascript">
-		var editor = ace.edit("editor");
-		editor.setTheme("ace/theme/twilight");
-		editor.getSession().setMode("ace/mode/mips");
-	</script>
 
 	<style type="text/css">
 		.ace_gutter-cell.ace_breakpoint{

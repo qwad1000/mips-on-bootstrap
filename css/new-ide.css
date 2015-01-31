@@ -2,15 +2,15 @@
 	/*float: inherit;*/
 	font-size:.9em;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	border:1px solid #ddd;
-	border-radius:3px;
+	border:1px #ddd;
+	border-radius:5px;
 	height: 100%;
 }
 .editor-wrapper{
-	height: 300px;
+	height: 350px;
 	width: 100%;
-	border-radius: 3px;
-	border-style: solid;
+	border-radius: 5px;
+	border-style: double;
 }
 .result-area{
 	width: 100%;
@@ -24,11 +24,20 @@
 
 .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td{
     padding: 0px;
+    max-width: 100%;
 }
 
 .table-wrapper{
 	max-width: 100%;
+	border-style: double;
+	border-radius: 5px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
+.table {
+	margin: 0px;
+}
+
 .table-wrapper > table>tbody>tr>th, .table-wrapper > table>thead>tr>th {
 	text-align: center;
 }

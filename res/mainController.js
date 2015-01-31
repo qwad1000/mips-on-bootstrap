@@ -1,5 +1,13 @@
 var app = angular.module("MIPS-app",[]);
 
+var editor = ace.edit("editor");
+//editor.setTheme("ace/theme/twilight");
+editor.getSession().setMode("ace/mode/mips");
+
+app.config(function($interpolateProvider) {
+	    $interpolateProvider.startSymbol('[$');
+	    $interpolateProvider.endSymbol('$]');
+});
 
 app.controller ("testController" , function($scope) {
 	var demoCPU = initDemoCPU();
@@ -17,7 +25,10 @@ app.controller ("testController" , function($scope) {
 
 	$scope.commandsCount = -1;
 	$scope.dividedRegisters = prepareRegistersTable(2, $scope.registers, $scope.registersName);
-	$scope.memoryShifts = prepareMemoryTable(0x10,17	,8);
+	var memoryTableSize = {width: 8, height: 17}
+	$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);
+
+
 
 	function prepareRegistersTable(columns, arr, names){
 		var newArr = [];
@@ -70,12 +81,13 @@ app.controller ("testController" , function($scope) {
 		}
 		if(fmt == 'hex'){
 			m = m.toString(16).toUpperCase();
+			m = HexToFillHex(m, 2);
 		}
 		return m;
 	}
 
 	$scope.changeMemoryShift = function(){
-		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,8,8);
+		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);
 	}
 
 	$scope.loadInfo = function (){
@@ -136,7 +148,6 @@ app.controller ("testController" , function($scope) {
 	}
 	$scope.reset = function (){//todo
 		demoCPU.ram.setDex(123, 234);
-		var r = $scope.returnMemoryBlock(115, 12,12);
 		console.log('asdf');
 	}
 
