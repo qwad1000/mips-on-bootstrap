@@ -16,10 +16,12 @@ app.controller ("testController" , function($scope) {
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
 	$scope.ram = demoCPU.ram;
+	$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
 	$scope.registersName = registersName;
 	$scope.resultArea = "";
 	$scope.isEditing = true;
 	$scope.loadBtnText = "Assemble & Load to CPU";
+
 	
 	$scope.hexRegFmt = 'hex';
 	$scope.memoryShift = 0x12;

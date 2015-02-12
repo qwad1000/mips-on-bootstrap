@@ -1,0 +1,1283 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"exe",
+				"exercisePath"
+			],
+			[
+				"ex",
+				"exerciseVar"
+			],
+			[
+				"exer",
+				"exercisePath"
+			],
+			[
+				"cu",
+				"commandsCount"
+			],
+			[
+				"set",
+				"setReadOnly"
+			],
+			[
+				"is",
+				"isEditing"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"loa",
+				"loadInfo"
+			],
+			[
+				"run",
+				"runConvert"
+			],
+			[
+				"j",
+				"jsonTest"
+			],
+			[
+				"ng-",
+				"ng-selected	AngularJS"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"do",
+				"double"
+			],
+			[
+				"regis",
+				"registers"
+			],
+			[
+				"comm",
+				"commandHolder"
+			],
+			[
+				"comma",
+				"commandParser"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"bor",
+				"border-style"
+			],
+			[
+				"con",
+				"concatStr"
+			],
+			[
+				"co",
+				"concatStr"
+			],
+			[
+				"h",
+				"hlength"
+			],
+			[
+				"mem",
+				"memoryTableSize"
+			],
+			[
+				"memo",
+				"memoryTableSize"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"memor",
+				"memoryShifts"
+			],
+			[
+				"to",
+				"toUpperCase"
+			],
+			[
+				"ra",
+				"ramMap"
+			],
+			[
+				"retu",
+				"return"
+			],
+			[
+				"get",
+				"getValue"
+			],
+			[
+				"0x",
+				"0x12"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"col",
+				"console"
+			],
+			[
+				"re",
+				"returnMemoryBlock"
+			],
+			[
+				"par",
+				"parseInt"
+			],
+			[
+				"regi",
+				"registerHolder"
+			],
+			[
+				"se",
+				"session"
+			],
+			[
+				"val",
+				"values"
+			],
+			[
+				"ndc",
+				"ng-checked	AngularJS"
+			],
+			[
+				"ram",
+				"ramHolder"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"new",
+				"newArr"
+			],
+			[
+				"inde",
+				"index"
+			],
+			[
+				"ng-ch",
+				"ng-checked	AngularJS"
+			],
+			[
+				"ng",
+				"ng-checked	AngularJS"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"de",
+				"demoCPU"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"Re",
+				"return"
+			],
+			[
+				"$s",
+				"$scope	AngularJS"
+			],
+			[
+				"Loa",
+				"loadInfo"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"spl",
+				"splitedCode"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"res",
+				"resultArea"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"ali",
+				"vertical-align"
+			],
+			[
+				"bo-co",
+				"border-color"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"border-",
+				"border-style"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"rect",
+				"love.graphics.rectangle"
+			],
+			[
+				"t",
+				"true"
+			],
+			[
+				"iup.",
+				"iup.PPlotAdd"
+			],
+			[
+				"plot",
+				"plot.REDRAW"
+			],
+			[
+				"iup",
+				"iup.PPlotAdd"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"err",
+				"err"
+			],
+			[
+				"else",
+				"elseif	elseif cond then"
+			],
+			[
+				"love.key",
+				"love.keyreleased"
+			],
+			[
+				"love.mo",
+				"love.mousereleased"
+			],
+			[
+				"move",
+				"move_rt"
+			],
+			[
+				"u",
+				"u_0t"
+			],
+			[
+				"file",
+				"file_path"
+			],
+			[
+				"u_",
+				"u_1"
+			],
+			[
+				"r",
+				"real_u"
+			],
+			[
+				"pri",
+				"print_table"
+			],
+			[
+				"fu",
+				"full_table"
+			],
+			[
+				"N",
+				"N-1"
+			],
+			[
+				"h1",
+				"h1_2"
+			],
+			[
+				"h2",
+				"h2_2"
+			],
+			[
+				"d",
+				"document"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Замеченные баги:\n* таки надо писать команды в память, а не в отдельный холдер\n* labels\n* tests\n\ndone:\n\n\nlow-priority:\nпеределать модель памяти",
+			"file": "todo.md",
+			"file_size": 149,
+			"file_write_time": 130672145552892503,
+			"settings":
+			{
+				"buffer_size": 142,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n\nSublimall:\n---------\n\n  Thank you for installing Sublimall!\n  Sublimall is the way to synchronize your SublimeText configuration everywhere.\n  \n  First steps\n  ===========\n  \n  In order to use Sublimall you just need one dependency, 7zip installed on your system.\n  \n  Give me feedback!\n  \n  Geoffrey.\n  \n  Docs: http://sublimall.org/docs\n  Github: https://github.com/socketubs/Sublimall\n  Email: hello@sublimall.org\n  \nPackage Control Messages\n========================\n\nSublimeCodeIntel:\n----------------\n\n  SublimeCodeIntel\n  ================\n  \n  A full-featured code intelligence and smart autocomplete engine for Sublime Text.\n  (Code intelligence plugin ported from Open Komodo Editor to Sublime Text)\n  \n  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HELP WANTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n  !!    Maintaining this project is hard, I do it in my spare time, but I'm     !!\n  !!    basically all alone. If anyone is interested in contributing, please    !!\n  !!    contact me. I really need much more help maintaining SublimeCodeIntel   !!\n  !!                                                                            !!\n  !!                      Follow me on twitter @germbravo                       !!\n  !!          You can find us at #sublimecodeintel on irc.freenode.net          !!\n  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n  \n  ** Restart Sublime Text after reading this **\n  \n  In case of trouble, please read the Troubleshooting section in the README.\n  \n  If you like SublimeCodeIntel, please make a donation: http://sublimecodeintel.github.io/SublimeCodeIntel/donate.html\n  \n  \n  Features:\n  ---------\n  \n  Supports all the languages Komodo Editor supports for Code Intelligence (CIX, CodeIntel2):\n  \n  JavaScript, Mason, XBL, XUL, RHTML, SCSS, Python, HTML, Ruby, Python3, XML, Sass, XSLT, Django, HTML5, Perl, CSS, Twig, Less, Smarty, Node.js, Tcl, TemplateToolkit, PHP.\n  \n  \n  Provides the following features:\n  \n  * Jump to Symbol Definition - Jump to the file and line of the definition of a symbol.\n  * Imports autocomplete - Shows autocomplete with the available modules/symbols in real time.\n  * Function Call tooltips - Displays information in the status bar about the working function.\n  \n  \n  + Shortcuts for jump to definition have changed:\n  \n    For Mac OS X:\n      * Jump to definition = ``Control+Click``\n      * Jump to definition = ``Control+Command+Alt+Up``\n      * Go back = ``Control+Command+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Linux:\n      * Jump to definition = ``Super+Click``\n      * Jump to definition = ``Control+Super+Alt+Up``\n      * Go back = ``Control+Super+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Windows:\n      * Jump to definition = ``Alt+Click``\n      * Jump to definition = ``Control+Windows+Alt+Up``\n      * Go back = ``Control+Windows+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n  \n  For more information:\n  ---------------------\n  Please take the time to read the documentation:\n  \n  * Online - http://sublimecodeintel.github.io/SublimeCodeIntel/\n  \n  \n  IMPORTANT\n  \n  Do NOT edit the default SublimeCodeIntel settings. Your changes will be lost\n  when SublimeCodeIntel is updated. ALWAYS edit the user SublimeCodeIntel settings\n  by selecting \"Preferences->Package Settings->SublimeCodeIntel->Settings - User\".\n  Note that individual settings you include in your user settings will **completely**\n  replace the corresponding default setting, so you must provide that setting in its entirety.\n  \n",
+			"settings":
+			{
+				"buffer_size": 3586,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"scratch": true
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html ng-app=\"MIPS-app\">\n<head>\n	<meta charset=\"UTF-8\"/>\n	<title>MIPS page</title>\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js\"></script>-->\n	<script src=\"res/angular.min.js\"></script>\n	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n	<!--<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">-->\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/bootstrap.min.css\">\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>-->\n	<script src=\"res/jquery-1.11.2.min.js\"></script>\n	<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>\n</head>\n\n<body ng-controller=\"testController\">\n	<div class=\"page-wrapper container-fluid\">\n		<div class=\"row main-part-wrapper\">\n			<div class=\"col-sm-4 column\">\n				<button type=\"button\" class=\"btn btn-success btn-block btn-sm\" ng-click=\"loadInfo()\">[$ loadBtnText $]</button>\n				<div class=\"editor-wrapper\">\n					<div id=\"editor\" class=\"code-editor\" ng-model=\"codeArea\"></div>\n				</div>\n				<div class=\"btn-group-sm btn-group-justified\" ng-hide=\"isEditing\">\n					<a type=\"button\" class=\"btn btn-primary\" ng-click=\"runConvert()\" ng-disabled=\"commandsCount==0\">Run</a>\n					<a type=\"button\" class=\"btn btn-default\" ng-click=\"runStep()\" ng-disabled=\"commandsCount==0\">Step</a>\n					<a type=\"button\" class=\"btn btn-danger\" ng-click=\"reset()\">Reset</a>\n					<div class=\"btn-group\">\n						<button type=\"button\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">\n							Initial state <span class=\"caret\"></span>\n						</button>\n						<ul class=\"dropdown-menu\" role=\"menu\" >\n							<li><a href=\"#\">No test</a></li>\n							<li class=\"divider\"></li>\n							<li ng-repeat=\"val in exercise.tests\">\n								<button class=\"btn\" ng-click=\"testClick(val.id)\">\n								<span class=\"glyphicon glyphicon-ok\" ng-show=\"val.passed\"></span>\n								<span class=\"glyphicon glyphicon-remove\" ng-hide=\"val.passed || val.passed == undefined\"></span>\n								 [$val.title$]</button>\n							</li>\n						</ul>\n					</div>\n				</div>\n			</div>\n\n			<!-- registers table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-hovered table-bordered\">\n						<thead>\n							<tr>\n								<th>Name</th>\n								<th>Value</th>\n								<th>Name</th>\n								<th>Value</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr>\n								<td>PC</td>\n								<td>[$ programCounter $]</td>\n								<td>?</td>\n								<td>todo</td>\n							</tr>\n\n							<tr ng-repeat=\"row in dividedRegisters track by $index\">\n								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>\n								<td>[$ returnRegister(row[0].indx, hexRegFmt) $]</td>\n								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>\n								<td>[$ returnRegister(row[1].indx, hexRegFmt) $]</td>\n							</tr>\n						</tbody>\n					</table>\n				</div>\n				<div class=\"number-type-wrapper\">\n					<label>Register value format:</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"dec\" ng-model=\"hexRegFmt\">\n						Dec\n					</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"hex\" ng-model=\"hexRegFmt\" >\n						Hex\n					</label>\n				</div>\n			</div>\n\n			<!-- memory table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-bordered\">\n						<thead>\n							<tr>\n								<th><span ng-show=\"ram.isClear()\">EMPTY</span></th>\n								<th class=\"info\" ng-repeat=\"num in [0,1,2,3,4,5,6,7]\">\n								[$num$]\n							</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr ng-repeat=\"num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]\">\n								<th class=\"info\">[$ \"0x\" + (memoryShift + num*8).toString(16).toUpperCase() $]</th>\n								<!--todo: 8 -> cols-->\n								<td class=\"memory-cell\" ng-repeat=\"inf in [0,1,2,3,4,5,6,7]\">\n									[$ returnMemoryValue(memoryShifts[num][inf],hexRegFmt) $]\n								</td>\n							</tr>\n						</tbody>\n					</table>\n					\n				</div>\n				<div>\n					<label>Смещение (hex):</label>\n					<input type=\"number\" ng-model=\"memoryShift\">\n					<button class=\"btn btn-sm btn-success\" ng-click=\"changeMemoryShift()\">Look through</button>\n				</div>\n			</div>\n		</div>\n\n		<div class=\"row\">\n			<div class=\"col-sm-4\">adsf	</div>\n			<div class=\"col-sm-8\">\n				<textarea class=\"result-area\" ng-model=\"resultArea\"></textarea>\n			</div>\n		</div>\n	</div>\n\n	<!-- ======  Scripts + CSS section  ======= -->\n\n	<script src=\"res/src-noconflict/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\n	<script src=\"res/example.js\"></script>\n\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/new-ide.css\">\n	<script src=\"res/emulator/mips.js\"></script>\n	<script src=\"res/emulator/mips_constants.js\"></script>\n	<script src=\"res/emulator/utility.js\"></script>\n	<script src=\"res/mainController.js\"></script>\n	\n</body>\n</html>",
+			"file": "index-bootstrap.html",
+			"file_size": 5161,
+			"file_write_time": 130673497550992709,
+			"settings":
+			{
+				"buffer_size": 5014,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "res/emulator/mips.js",
+			"settings":
+			{
+				"buffer_size": 18661,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 196.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"sub",
+				"Sublimall: Upload"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"encod",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"fix co",
+				"GutterColor: Fix Current Color Scheme"
+			],
+			[
+				"gutt",
+				"Preferences: GutterColor Settings – User"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ma",
+				"Set Syntax: Markdown"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"js",
+				"Set Syntax: JSON"
+			],
+			[
+				"jso",
+				"Set Syntax: JSON"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"map",
+				"View: Toggle Minimap"
+			],
+			[
+				"angu",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"Snippet: bs3-radi",
+				"Snippet: bs3-input-radio"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"togg",
+				"View: Toggle Side Bar"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sidea",
+				"View: Toggle Side Bar"
+			],
+			[
+				"Snippet: ht",
+				"Snippet: html"
+			],
+			[
+				"html",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"ang",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"love",
+				"Set Syntax: Lua (Love)"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"set love",
+				"Set Syntax: Lua (Love)"
+			],
+			[
+				"buil",
+				"Build: Run"
+			],
+			[
+				"run",
+				"Build: Run"
+			],
+			[
+				"ru",
+				"Build: Run"
+			],
+			[
+				"bu",
+				"Build: Build"
+			],
+			[
+				"bui",
+				"Build: Run"
+			],
+			[
+				"set Sy lu",
+				"Set Syntax: Lua"
+			],
+			[
+				"set",
+				"Set Syntax: Lua"
+			],
+			[
+				"lvoe",
+				"Snippet: self.var = var or default"
+			],
+			[
+				"Love",
+				"Build: Love2D-Run"
+			],
+			[
+				"Love2D",
+				"Build: Love2D"
+			],
+			[
+				"pre",
+				"Preferences: Settings - Default"
+			],
+			[
+				"lateX",
+				"LaTeXing: Open Default Preferences"
+			],
+			[
+				"can",
+				"Build: Cancel"
+			],
+			[
+				"",
+				"Build: Run"
+			],
+			[
+				"toggle",
+				"View: Toggle Menu"
+			],
+			[
+				"set lua",
+				"Set Syntax: Lua"
+			],
+			[
+				"paca",
+				"Package Control: Remove Package"
+			],
+			[
+				"ju",
+				"LaTeXing: Jump To PDF"
+			],
+			[
+				"che",
+				"LaTeXing: Check System"
+			],
+			[
+				"sideb",
+				"View: Toggle Side Bar"
+			],
+			[
+				"late",
+				"LaTeXing: Open Default Preferences"
+			],
+			[
+				"tex",
+				"LaTeXing: Open PDF"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"m",
+				"View: Toggle Menu"
+			],
+			[
+				"sta",
+				"View: Toggle Status Bar"
+			],
+			[
+				"stat",
+				"View: Toggle Status Bar"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os; pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/workspace/web/mips",
+		"/E/workspace/web/mips/css",
+		"/E/workspace/web/mips/res",
+		"/E/workspace/web/mips/res/emulator"
+	],
+	"file_history":
+	[
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/Sublimall.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Sublimall/Sublimall.sublime-settings",
+		"/E/workspace/web/mips/res/mainController.js",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/ColorHighlighter.sublime-settings",
+		"/E/workspace/web/mips/css/new-ide.css",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/AutoFileName/autofilename.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Color Highlighter/Default.sublime-keymap",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/GutterColor.sublime-settings",
+		"/E/workspace/web/mips/res/emulator/mips.js",
+		"/C/Users/Сергій/Downloads/doomlegacy_1.44_alpha5_win32/doomlegacy_1.44_alpha5_win32/legacy.wad",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/vars1.json",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/anCont.js",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp.html",
+		"/C/Users/Сергій/Desktop/d74092e5a39f4812bee5aedeab133d0d.xml",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/exp.js",
+		"/E/workspace/web/mips/index.html",
+		"/E/workspace/web/mips/todo.md",
+		"/E/workspace/web/mips/index-bootstrap.html",
+		"/E/workspace/web/mips/.gitignore",
+		"/E/workspace/web/mips/.gitattributes",
+		"/C/Users/Сергій/Downloads/apptitune.apptitune(1)/res/layout/activity_fullscreen.xml",
+		"/C/Users/Сергій/Downloads/apptitune.apptitune(1)/AndroidManifest.xml",
+		"/C/Users/Сергій/AppData/Local/Temp/7zOF4E0.tmp/anCont.js",
+		"/C/Users/C69E~1/AppData/Local/Temp/7zOC255.tmp/anCont.js",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/css/exp.css",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/html/exp.html",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/emulator/mips.js",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/emulator/utility.js",
+		"/E/workspace/web/mips/res/tests/test1.json",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/setup.py",
+		"/E/workspace/web/mips/res/src-noconflict/ace.js",
+		"/E/workspace/web/mips/registers_table.html",
+		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/exp.py",
+		"/E/workspace/web/mips/res/example.js",
+		"/E/workspace/web/mips/res/src-noconflict/ext-modelist.js",
+		"/E/workspace/web/mips/tomo.md",
+		"/E/backup/2014-06-22/Documents/Toad Data Modeler/GeneratedScripts/Generated.SQL",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/E/workspace/lua/LOVE/hex/hex.sublime-project",
+		"/E/workspace/web/mips/angular-example.html",
+		"/E/workspace/web/mips/res/emulator/utility.js",
+		"/E/workspace/web/mips/css/ide.css",
+		"/E/workspace/web/mips/res/emulator/controller.js",
+		"/E/workspace/web/first_/stylesheets/style.css",
+		"/C/Users/Сергій/Downloads/apptitune.apptitune/AndroidManifest.xml",
+		"/E/workspace/java/kpt/src/com/qwad1000/kpt/MainActivity.java",
+		"/E/workspace/web/first_/index.html",
+		"/C/Users/Сергій/Documents/Syberia Saves/Config.dat",
+		"/E/workspace/lua/LOVE/hex/main.lua",
+		"/C/Users/Сергій/Desktop/activity_main.xml",
+		"/D/out-windows_lab4/run.bat",
+		"/C/Users/Сергій/Desktop/build.prop",
+		"/E/workspace/lua/LOVE/hello_world/main.lua",
+		"/E/workspace/lua/LOVE/hello_world/hello_world.sublime-project",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/MyLove.sublime-build",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Installed Packages/MyLuaLove.sublime-build",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Installed Packages/Love.sublime-build",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Installed Packages/SublimeLove.sublime-package",
+		"/D/workspace/vs/ConsoleApplication1/ConsoleApplication1/Device.cs",
+		"/D/workspace/vs/ConsoleApplication1/ConsoleApplication1/Sensor.cs",
+		"/D/workspace/qtWorkspace/oop/lab3/device.cpp",
+		"/D/workspace/texmaker/labs/NM/lab_9_subl/lab_9_nm_h2____.lua",
+		"/C/Program Files/Lua/5.1/examples/iup/pplot.wlua",
+		"/C/Program Files/Lua/5.1/examples/iup/misc/simple-pplot.wlua",
+		"/C/Program Files/Lua/5.1/examples/iup/misc/iupxpplot.lua",
+		"/C/Program Files/Lua/5.1/examples/iup/misc/pplot3.wlua",
+		"/D/workspace/lua/lab_9_nm_h1h2_.lua",
+		"/D/workspace/lua/LOVE/hello_world/main.lua",
+		"/D/workspace/qtWorkspace/oop/lab4/lab_4oop_stl.tex",
+		"/D/workspace/qtWorkspace/oop/lab2_oop.tex",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.tmLanguage",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua/Comments.tmPreferences",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/User/Lua_qwad1000.sublime-build",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/User/LuaLove_qwad1000.sublime-build",
+		"/D/workspace/lua/LOVE/hello world/main.lua",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua Love/LuaLove.sublime-settings",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/User/LuaLove.sublime-settings",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua Love/LuaLove.sublime-build",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua Love/LuaLove.sublime-completions",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Lua Love/Main.sublime-menu",
+		"/D/workspace/lua/nm_kr2/lab_9_nm_h1_parabol.lua",
+		"/D/workspace/lua/nm_kr2/lab_9_nm_hyperbol.lua",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/qwad1000/AppData/Roaming/Sublime Text 2/Packages/LaTeXing/LaTeXing.sublime-settings",
+		"/D/workspace/lua/LOVE/hello world/hello_LOVE.lua",
+		"/D/workspace/lua/nm_kr2/lab_9_nm_hyperbol",
+		"/D/workspace/lua/nm_kr2/lab_9_nm_h2.lua",
+		"/D/workspace/lua/lab_9_nm_h1h2.lua",
+		"/D/workspace/lua/lab_9_nm__.lua",
+		"/D/workspace/lua/lab_9_nm_h^2.lua"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"mult",
+			"exercisePath",
+			"initCommandRamHolder",
+			"initCommandParser",
+			"initRegisterHolder",
+			"demo",
+			"initCommandRamHolder",
+			"demo",
+			"to",
+			"setdex",
+			"}}",
+			"{{",
+			"command",
+			"divided",
+			"dextoFillBin",
+			"command",
+			"sw",
+			".substring",
+			"conta",
+			"ramH",
+			"commandHolder",
+			"convertds",
+			"contains",
+			"read",
+			"err",
+			"key"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"exerciseVar",
+			"$]",
+			"[$"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "todo.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								95,
+								95
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2809,
+								2809
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_indent": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 663.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "index-bootstrap.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5014,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								989,
+								989
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "res/emulator/mips.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 18661,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								371,
+								371
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 174.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latex_log":
+	{
+		"height": 133.0
+	},
+	"project": "mips.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"res\\emulator\\mips.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 187.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
