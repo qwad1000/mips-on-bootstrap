@@ -1,9 +1,8 @@
 var app = angular.module("MIPS-app",[]);
 
 var editor = ace.edit("editor");
-//editor.setTheme("ace/theme/twilight");
 editor.getSession().setMode("ace/mode/mips");
-editor.setValue("addi $t1 $zero 0x14\naddi $t2 $zero 0x20\nsw $t2 0($t1)");
+editor.setValue("add $t3 $t1 $t2");
 editor.gotoLine(0);
 
 app.config(function($interpolateProvider) {
@@ -11,8 +10,63 @@ app.config(function($interpolateProvider) {
 	    $interpolateProvider.endSymbol('$]');
 });
 
-app.controller ("testController" , function($scope) {
+var someEDXFounder = {};
+
+someEDXFounder.getState = function () {
+		var jsonObject = {
+			"code":editor.getValue(),
+			"exVar": exerciseVar.toString(),
+			"exPath": exercisePath
+		};	
+		return JSON.stringify(jsonObject);
+	};
+
+	someEDXFounder.setState = function (jsonCode){
+		var result = JSON.parse(jsonCode);
+		editor.setValue(result["code"]);
+		exerciseVar = parseInt(result["exVar"]);
+		exercisePath = result["exPath"];
+		console.log(exerciseVar);
+		console.log(exercisePath);
+		
+		$http.get(exercisePath)
+		.success( function (response) { 
+			$scope.exercise = response[exerciseVar]; 
+		}).error( function () {
+			$scope.resultArea += "Some error loading tests from" + exercisePath + "var:" + exerciseVar; 
+			$scope.exercise = initialObject;
+		});
+	};
+
+	someEDXFounder.gradeFunction = function () {
+		console.log($scope.exercise.tests);
+		var count = $scope.exercise.tests.length;
+		var goodCount = 0;
+		for (var id=0;id<count;id++){
+			var test = $scope.exercise.tests[id];
+			console.log(test.passed);
+			if (test.passed != false){
+				$scope.testClick(id);
+			}
+			if (test.passed == true){
+				goodCount = goodCount + 1;
+			}
+		}
+		var jsonResult = {
+			"count": count,
+			"goodCount":goodCount
+		};
+		console.log(jsonResult);
+		return JSON.stringify(jsonResult);
+	};
+
+
+var exerciseVar = 0;
+var exercisePath = "vars1.json";
+
+app.controller ("testController" , function($scope, $http) {
 	var demoCPU = initDemoCPU();
+	var commandRegex = new RegExp("(add|addi|addiu|addu|and|andi|beq|bgez|bgezal|bgtz|blez|bltz|bltzal|bne|div|divu|j|jal|jr|lb|lui|lw|mfhi|mflo|mult|multu|noop|or|ori|sb|sll|sllv|slt|sltu|sltiu|sra|srl|srlv|sub|subu|sw|xor|xori)(\\s([+-]?0x[1-9A-F]+|[+-]?[1-9]+|(\\$(30|31|[1-2]?[0-9]|t[0-9]|s[0-8]|ra|zero|at|v[0-1]|a[0-3]|k0|k1|gp|sp)))){1,3}");
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
 	$scope.ram = demoCPU.ram;
@@ -31,7 +85,18 @@ app.controller ("testController" , function($scope) {
 	var memoryTableSize = {width: 8, height: 17}
 	$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);
 
+	//crunch
+	$http.get(exercisePath)
+		.success( function (response) { 
+			var variants = response.variants;
+			var ex = variants[0];
+			$scope.exercise = ex;
+		}).error( function () {
+			$scope.resultArea += "Some error loading tests from" + exercisePath + "var:" + exerciseVar; 
+			//$scope.exercise = initialObject;
+		});
 
+	
 
 	function prepareRegistersTable(columns, arr, names){
 		var newArr = [];
@@ -64,10 +129,6 @@ app.controller ("testController" , function($scope) {
 		for(var i=0; i<rows; i++){
 			var arr2 = [];
 			for(var j=0; j<cols; j++){
-				// var v = $scope.ram.ramMap[shift + i*cols + j];
-				// if(typeof v == 'undefined'){
-				// 	v = 0;					
-				// }
 				var num = shift + i*cols + j;
 				arr2.push(num);
 			}
@@ -163,31 +224,41 @@ app.controller ("testController" , function($scope) {
 	}
 
 
-var jsonTestText = '{\n"id": 0,\n'+
-	'"title":"Some exercise",\n'+
-	'"exercise":"store some value into a memory",\n'+
-	'"tests":[{"id": 0, "title":"Test1","start": [{"t1":123},{"t2":155}],"end": [{"t1": 123},{"t2": 128}]},'+
-	'{"id": 1, "title":"Test2","start": [{"t1":12},{"t2":13}],"end": [{"t1": 2},{"t2": 2}]}'+
-	']}'
+// var jsonTestText = '{\n"id": 0,\n'+
+// 	'"title":"Some exercise",\n'+
+// 	'"exercise":"store some value into a memory",\n'+
+// 	'"tests":[{"id": 0, "title":"Test1","start": [{"t1":123},{"t2":155}],"end": [{"t1": 123},{"t2": 128}]},'+
+// 	'{"id": 1, "title":"Test2","start": [{"t1":12},{"t2":13}],"end": [{"t1": 2},{"t2": 2}]}'+
+// 	']}'
 
-	$scope.exercise = JSON.parse(jsonTestText);
+	//$scope.exercise = JSON.parse(jsonTestText);
 
 	$scope.testClick = function (id){
 		$scope.reset();
 		var test = $scope.exercise.tests[id];
-		var k = Object.keys(test.start);
-		angular.forEach(test.start, function (item, i, arr){
+
+		angular.forEach(test.registers.start, function (item, i, arr){
 			var key = Object.keys(item)[0];
 			var code = registerCode[key];
 			var val = item[key];
 			demoCPU.register.set(code, val);
 		});
 
+		if(test.memory.start != null){
+			angular.forEach(test.memory.start, function (item, i, arr){
+				var adress = Object.keys(item)[0];
+				var val = item[adress];
+
+				demoCPU.ram.setHex(adress, val);
+			});
+		}
+		
+
 		$scope.runConvert();
 
 		var testPassed = true;
 
-		angular.forEach(test.end, function (item, i, arr){
+		angular.forEach(test.registers.end, function (item, i, arr){
 			var key = Object.keys(item)[0];
 			var code = registerCode[key];
 			var val = item[key];
@@ -196,6 +267,18 @@ var jsonTestText = '{\n"id": 0,\n'+
 				testPassed = false;
 			}
 		});
+
+		if(test.memory.end != null){
+			angular.forEach(test.memory.end, function (item,i, key){
+				var adress = Object.keys(item)[0];
+				var val = item[adress];
+
+				var currentVal = demoCPU.ram.getHex(adress);
+				if(currentVal != val){
+					testPassed = false;
+				}
+			});
+		}
 
 		test.passed = testPassed;//todo
 	}

@@ -5,7 +5,7 @@
 		[
 			[
 				"exe",
-				"exercisePath"
+				"exerciseVar〔variable〕"
 			],
 			[
 				"ex",
@@ -371,16 +371,6 @@
 			}
 		},
 		{
-			"contents": "\n\nSublimall:\n---------\n\n  Thank you for installing Sublimall!\n  Sublimall is the way to synchronize your SublimeText configuration everywhere.\n  \n  First steps\n  ===========\n  \n  In order to use Sublimall you just need one dependency, 7zip installed on your system.\n  \n  Give me feedback!\n  \n  Geoffrey.\n  \n  Docs: http://sublimall.org/docs\n  Github: https://github.com/socketubs/Sublimall\n  Email: hello@sublimall.org\n  \nPackage Control Messages\n========================\n\nSublimeCodeIntel:\n----------------\n\n  SublimeCodeIntel\n  ================\n  \n  A full-featured code intelligence and smart autocomplete engine for Sublime Text.\n  (Code intelligence plugin ported from Open Komodo Editor to Sublime Text)\n  \n  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HELP WANTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n  !!    Maintaining this project is hard, I do it in my spare time, but I'm     !!\n  !!    basically all alone. If anyone is interested in contributing, please    !!\n  !!    contact me. I really need much more help maintaining SublimeCodeIntel   !!\n  !!                                                                            !!\n  !!                      Follow me on twitter @germbravo                       !!\n  !!          You can find us at #sublimecodeintel on irc.freenode.net          !!\n  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n  \n  ** Restart Sublime Text after reading this **\n  \n  In case of trouble, please read the Troubleshooting section in the README.\n  \n  If you like SublimeCodeIntel, please make a donation: http://sublimecodeintel.github.io/SublimeCodeIntel/donate.html\n  \n  \n  Features:\n  ---------\n  \n  Supports all the languages Komodo Editor supports for Code Intelligence (CIX, CodeIntel2):\n  \n  JavaScript, Mason, XBL, XUL, RHTML, SCSS, Python, HTML, Ruby, Python3, XML, Sass, XSLT, Django, HTML5, Perl, CSS, Twig, Less, Smarty, Node.js, Tcl, TemplateToolkit, PHP.\n  \n  \n  Provides the following features:\n  \n  * Jump to Symbol Definition - Jump to the file and line of the definition of a symbol.\n  * Imports autocomplete - Shows autocomplete with the available modules/symbols in real time.\n  * Function Call tooltips - Displays information in the status bar about the working function.\n  \n  \n  + Shortcuts for jump to definition have changed:\n  \n    For Mac OS X:\n      * Jump to definition = ``Control+Click``\n      * Jump to definition = ``Control+Command+Alt+Up``\n      * Go back = ``Control+Command+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Linux:\n      * Jump to definition = ``Super+Click``\n      * Jump to definition = ``Control+Super+Alt+Up``\n      * Go back = ``Control+Super+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Windows:\n      * Jump to definition = ``Alt+Click``\n      * Jump to definition = ``Control+Windows+Alt+Up``\n      * Go back = ``Control+Windows+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n  \n  For more information:\n  ---------------------\n  Please take the time to read the documentation:\n  \n  * Online - http://sublimecodeintel.github.io/SublimeCodeIntel/\n  \n  \n  IMPORTANT\n  \n  Do NOT edit the default SublimeCodeIntel settings. Your changes will be lost\n  when SublimeCodeIntel is updated. ALWAYS edit the user SublimeCodeIntel settings\n  by selecting \"Preferences->Package Settings->SublimeCodeIntel->Settings - User\".\n  Note that individual settings you include in your user settings will **completely**\n  replace the corresponding default setting, so you must provide that setting in its entirety.\n  \n",
-			"settings":
-			{
-				"buffer_size": 3586,
-				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"scratch": true
-			}
-		},
-		{
 			"contents": "<!DOCTYPE html>\n<html ng-app=\"MIPS-app\">\n<head>\n	<meta charset=\"UTF-8\"/>\n	<title>MIPS page</title>\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js\"></script>-->\n	<script src=\"res/angular.min.js\"></script>\n	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n	<!--<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">-->\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/bootstrap.min.css\">\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>-->\n	<script src=\"res/jquery-1.11.2.min.js\"></script>\n	<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>\n</head>\n\n<body ng-controller=\"testController\">\n	<div class=\"page-wrapper container-fluid\">\n		<div class=\"row main-part-wrapper\">\n			<div class=\"col-sm-4 column\">\n				<button type=\"button\" class=\"btn btn-success btn-block btn-sm\" ng-click=\"loadInfo()\">[$ loadBtnText $]</button>\n				<div class=\"editor-wrapper\">\n					<div id=\"editor\" class=\"code-editor\" ng-model=\"codeArea\"></div>\n				</div>\n				<div class=\"btn-group-sm btn-group-justified\" ng-hide=\"isEditing\">\n					<a type=\"button\" class=\"btn btn-primary\" ng-click=\"runConvert()\" ng-disabled=\"commandsCount==0\">Run</a>\n					<a type=\"button\" class=\"btn btn-default\" ng-click=\"runStep()\" ng-disabled=\"commandsCount==0\">Step</a>\n					<a type=\"button\" class=\"btn btn-danger\" ng-click=\"reset()\">Reset</a>\n					<div class=\"btn-group\">\n						<button type=\"button\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">\n							Initial state <span class=\"caret\"></span>\n						</button>\n						<ul class=\"dropdown-menu\" role=\"menu\" >\n							<li><a href=\"#\">No test</a></li>\n							<li class=\"divider\"></li>\n							<li ng-repeat=\"val in exercise.tests\">\n								<button class=\"btn\" ng-click=\"testClick(val.id)\">\n								<span class=\"glyphicon glyphicon-ok\" ng-show=\"val.passed\"></span>\n								<span class=\"glyphicon glyphicon-remove\" ng-hide=\"val.passed || val.passed == undefined\"></span>\n								 [$val.title$]</button>\n							</li>\n						</ul>\n					</div>\n				</div>\n			</div>\n\n			<!-- registers table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-hovered table-bordered\">\n						<thead>\n							<tr>\n								<th>Name</th>\n								<th>Value</th>\n								<th>Name</th>\n								<th>Value</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr>\n								<td>PC</td>\n								<td>[$ programCounter $]</td>\n								<td>?</td>\n								<td>todo</td>\n							</tr>\n\n							<tr ng-repeat=\"row in dividedRegisters track by $index\">\n								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>\n								<td>[$ returnRegister(row[0].indx, hexRegFmt) $]</td>\n								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>\n								<td>[$ returnRegister(row[1].indx, hexRegFmt) $]</td>\n							</tr>\n						</tbody>\n					</table>\n				</div>\n				<div class=\"number-type-wrapper\">\n					<label>Register value format:</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"dec\" ng-model=\"hexRegFmt\">\n						Dec\n					</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"hex\" ng-model=\"hexRegFmt\" >\n						Hex\n					</label>\n				</div>\n			</div>\n\n			<!-- memory table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-bordered\">\n						<thead>\n							<tr>\n								<th><span ng-show=\"ram.isClear()\">EMPTY</span></th>\n								<th class=\"info\" ng-repeat=\"num in [0,1,2,3,4,5,6,7]\">\n								[$num$]\n							</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr ng-repeat=\"num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]\">\n								<th class=\"info\">[$ \"0x\" + (memoryShift + num*8).toString(16).toUpperCase() $]</th>\n								<!--todo: 8 -> cols-->\n								<td class=\"memory-cell\" ng-repeat=\"inf in [0,1,2,3,4,5,6,7]\">\n									[$ returnMemoryValue(memoryShifts[num][inf],hexRegFmt) $]\n								</td>\n							</tr>\n						</tbody>\n					</table>\n					\n				</div>\n				<div>\n					<label>Смещение (hex):</label>\n					<input type=\"number\" ng-model=\"memoryShift\">\n					<button class=\"btn btn-sm btn-success\" ng-click=\"changeMemoryShift()\">Look through</button>\n				</div>\n			</div>\n		</div>\n\n		<div class=\"row\">\n			<div class=\"col-sm-4\">adsf	</div>\n			<div class=\"col-sm-8\">\n				<textarea class=\"result-area\" ng-model=\"resultArea\"></textarea>\n			</div>\n		</div>\n	</div>\n\n	<!-- ======  Scripts + CSS section  ======= -->\n\n	<script src=\"res/src-noconflict/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\n	<script src=\"res/example.js\"></script>\n\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/new-ide.css\">\n	<script src=\"res/emulator/mips.js\"></script>\n	<script src=\"res/emulator/mips_constants.js\"></script>\n	<script src=\"res/emulator/utility.js\"></script>\n	<script src=\"res/mainController.js\"></script>\n	\n</body>\n</html>",
 			"file": "index-bootstrap.html",
 			"file_size": 5161,
@@ -392,10 +382,29 @@
 			}
 		},
 		{
-			"file": "res/emulator/mips.js",
+			"file": "res/mainController.js",
 			"settings":
 			{
-				"buffer_size": 18661,
+				"buffer_size": 7476,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "vars1.json",
+			"settings":
+			{
+				"buffer_size": 1272,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "var app = angular.module(\"MIPS-app\",[]);\n\napp.config(function($interpolateProvider) {\n	    $interpolateProvider.startSymbol('[$');\n	    $interpolateProvider.endSymbol('$]');\n});\n\nvar someEDXFounder = {};\nvar exerciseVar = -1;\nvar exercisePath = \"\";\n\napp.controller (\"testController\", function($scope, $http) {\n	var demoCPU = initDemoCPU();\n	var commandRegex = new RegExp(\"(add|addi|addiu|addu|and|andi|beq|bgez|bgezal|bgtz|blez|bltz|bltzal|bne|div|divu|j|jal|jr|lb|lui|lw|mfhi|mflo|mult|multu|noop|or|ori|sb|sll|sllv|slt|sltu|sltiu|sra|srl|srlv|sub|subu|sw|xor|xori)(\\\\s([+-]?0x[1-9A-F]+|[+-]?[1-9]+|(\\\\$(30|31|[1-2]?[0-9]|t[0-9]|s[0-8]|ra|zero|at|v[0-1]|a[0-3]|k0|k1|gp|sp)))){1,3}\");\n	$scope.codeArea = \"\";\n	$scope.registers = demoCPU.register.registerMap;\n	$scope.ram = demoCPU.ram;\n	$scope.registersName = registersName;\n	$scope.resultArea = \"\";\n	$scope.isEditing = true;\n	$scope.loadBtnText = \"Assemble & Load to CPU\";\n\n	\n	$scope.hexRegFmt = 'hex';\n	$scope.memoryShift = 0x12;\n\n	$scope.commandsCount = -1;\n	$scope.dividedRegisters = prepareRegistersTable(2, $scope.registers, $scope.registersName);\n	var memoryTableSize = {width: 8, height: 17}\n	$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);\n	\n\n	// $http.get(exercisePath)\n	// .success( function (response) { \n	// 	$scope.exercise = response[exerciseVar]; \n	// }).error( function () {\n	// 	$scope.resultArea += \"Some error loading tests from\" + exercisePath + \"var:\" + exerciseVar; \n	// 	$scope.exercise = initialObject;\n	// });\n\n	// $scope.exercise = initialObject;\n	\n\n\n	someEDXFounder.getState = function () {\n		var jsonObject = {\n			\"code\":editor.getValue(),\n			\"exVar\": exerciseVar.toString(),\n			\"exPath\": exercisePath\n		};	\n		return JSON.stringify(jsonObject);\n	};\n\n	someEDXFounder.setState = function (jsonCode){\n		var result = JSON.parse(jsonCode);\n		editor.setValue(result[\"code\"]);\n		exerciseVar = parseInt(result[\"exVar\"]);\n		exercisePath = result[\"exPath\"];\n		console.log(exerciseVar);\n		console.log(exercisePath);\n		\n		$http.get(exercisePath)\n		.success( function (response) { \n			$scope.exercise = response[exerciseVar]; \n		}).error( function () {\n			$scope.resultArea += \"Some error loading tests from\" + exercisePath + \"var:\" + exerciseVar; \n			$scope.exercise = initialObject;\n		});\n	};\n\n	someEDXFounder.gradeFunction = function () {\n		console.log($scope.exercise.tests);\n		var count = $scope.exercise.tests.length;\n		var goodCount = 0;\n		for (var id=0;id<count;id++){\n			var test = $scope.exercise.tests[id];\n			console.log(test.passed);\n			if (test.passed != false){\n				$scope.testClick(id);\n			}\n			if (test.passed == true){\n				goodCount = goodCount + 1;\n			}\n		}\n		var jsonResult = {\n			\"count\": count,\n			\"goodCount\":goodCount\n		};\n		console.log(jsonResult);\n		return JSON.stringify(jsonResult);\n	};\n\n	function prepareRegistersTable(columns, arr, names){\n		var newArr = [];\n		var newlength = arr.length/columns;\n		\n		for(var i=0; i<newlength; i++){ //fixme: if columns is odd\n			var newnewArr = []\n			for(var j=0; j<columns; j++){\n				var index = i+newlength*j;\n				var obj = {name:names[index], indx:index};\n				newnewArr.push(obj);\n			}\n			newArr.push(newnewArr);\n		}\n		return newArr;\n	}\n\n	$scope.returnRegister = function(index, fmt){\n		if(fmt=='hex'){\n			return \"0x\" + $scope.registers[index].toString(16).toUpperCase();		\n		}\n		return $scope.registers[index];\n	}\n\n	function prepareMemoryTable(shift, rows, cols){\n		if(typeof shift == 'string'){\n			shift = parseInt(shift)\n		}\n		var arr = [];\n		for(var i=0; i<rows; i++){\n			var arr2 = [];\n			for(var j=0; j<cols; j++){\n				// var v = $scope.ram.ramMap[shift + i*cols + j];\n				// if(typeof v == 'undefined'){\n				// 	v = 0;					\n				// }\n				var num = shift + i*cols + j;\n				arr2.push(num);\n			}\n			arr.push(arr2);\n		}\n		return arr;\n	}\n\n	$scope.returnMemoryValue = function (index, fmt){\n		//fixme ???\n		var m = $scope.ram.ramMap[index];\n		if(typeof m == 'undefined'){\n			m = 0;\n		}\n		if(fmt == 'hex'){\n			m = m.toString(16).toUpperCase();\n			m = HexToFillHex(m, 2);\n		}\n		return m;\n	}\n\n	$scope.changeMemoryShift = function(){\n		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);\n	}\n\n	$scope.loadInfo = function (){\n		if($scope.isEditing){\n			$scope.resultArea = \"\";\n			$scope.codeArea = editor.getValue();\n			var operations_list = $scope.codeArea.split('\\n');\n			$scope.commandsCount = 0;\n\n			for(var i=0; i<operations_list.length; i++){\n				var value = operations_list[i].trim();\n				if (!commandRegex.test(value)){\n					alert(\"У цьому рядку\\n\" + value+\"\\nє помилка. Правда!\");\n					return;\n				}\n				if(value.length > 0){\n					var indexOf = value.indexOf(\":\");\n					if (indexOf != -1) {\n						var label = value.substring(0, indexOf);\n						demoCPU.commandParser.commandHolder.addLabel(label);\n						var command = value.substring(indexOf + 1);\n						if (command.length > 0) {\n							value = command;\n						} else {\n							return;\n						}\n					}\n					var binResult = demoCPU.command(value);\n					console.log(binResult);\n					$scope.commandsCount++;\n					$scope.resultArea += BinToViewBin(binResult) + \"\\n\";\n				}\n			}\n			$scope.isEditing = false;\n			$scope.loadBtnText = \"Return to code editor\";\n			editor.setReadOnly(true);\n		}else{ //fixme: memory leaks??? todo: command deleting\n			demoCPU.commandParser.commandHolder.clear();\n			$scope.isEditing = true;\n			$scope.loadBtnText = \"Assemble & Load to CPU\";\n			editor.setReadOnly(false);\n			$scope.commandsCount = -1;\n		}\n\n	}\n	$scope.runConvert = function () {\n		for(var i=0; i<$scope.commandsCount; i++){\n			demoCPU.nextCommand();\n		}\n		$scope.commandsCount = 0;\n		console.log(\"состояние регистров под конец работы:\");\n		console.log(demoCPU.register.registerMap);\n		console.log(demoCPU.ram.ramMap);\n	}\n	\n	$scope.runStep = function () {\n		if($scope.commandsCount>0){\n			demoCPU.nextCommand();\n			editor.session.clearBreakpoints();\n			var rows = editor.session.getLength(); //fixme: indexes may be wrong if delete empty rows in ediotr\n			editor.session.setBreakpoint(rows - $scope.commandsCount);\n			$scope.commandsCount--;\n		}\n	}\n	$scope.reset = function (){//todo\n		demoCPU = {};\n		demoCPU = initDemoCPU();\n		editor.session.clearBreakpoints();\n		$scope.registers = demoCPU.register.registerMap;\n		$scope.ram = demoCPU.ram;\n		$scope.isEditing = true; //crunch;\n		$scope.commandsCount = -1;\n		$scope.loadInfo();\n\n		console.log('mips cpu reseted');\n	}\n\n	$scope.testClick = function (id){\n		$scope.reset();\n		var test = $scope.exercise.tests[id];\n		var k = Object.keys(test.start);\n		angular.forEach(test.start, function (item, i, arr){\n			var key = Object.keys(item)[0];\n			var code = registerCode[key];\n			var val = item[key];\n			demoCPU.register.set(code, val);\n		});\n\n		$scope.runConvert();\n\n		var testPassed = true;\n\n		angular.forEach(test.end, function (item, i, arr){\n			var key = Object.keys(item)[0];\n			var code = registerCode[key];\n			var val = item[key];\n			var currentVal = demoCPU.register.get(code);\n			if(currentVal != val){\n				testPassed = false;\n			}\n		});\n\n		test.passed = testPassed;//todo\n	}\n});",
+			"file": "/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/anCont.js",
+			"file_size": 7443,
+			"file_write_time": 130682102138152414,
+			"settings":
+			{
+				"buffer_size": 7119,
 				"line_ending": "Windows"
 			}
 		}
@@ -403,12 +412,24 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 196.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"toggle mi",
+				"View: Toggle Minimap"
 			],
 			[
 				"sub",
@@ -447,10 +468,6 @@
 				"Set Syntax: Markdown"
 			],
 			[
-				"side",
-				"View: Toggle Side Bar"
-			],
-			[
 				"js",
 				"Set Syntax: JSON"
 			],
@@ -481,10 +498,6 @@
 			[
 				"Snippet: bs3-radi",
 				"Snippet: bs3-input-radio"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"togg",
@@ -662,9 +675,7 @@
 	"expanded_folders":
 	[
 		"/E/workspace/web/mips",
-		"/E/workspace/web/mips/css",
-		"/E/workspace/web/mips/res",
-		"/E/workspace/web/mips/res/emulator"
+		"/E/workspace/web/mips/res"
 	],
 	"file_history":
 	[
@@ -780,6 +791,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$http",
 			"mult",
 			"exercisePath",
 			"initCommandRamHolder",
@@ -826,7 +838,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -852,61 +864,61 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
@@ -915,101 +927,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2809,
-								2809
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_indent": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 663.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "index-bootstrap.html",
 					"semi_transient": false,
 					"settings":
@@ -1021,8 +943,8 @@
 						"selection":
 						[
 							[
-								989,
-								989
+								91,
+								91
 							]
 						],
 						"settings":
@@ -1031,93 +953,94 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 90.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "res/emulator/mips.js",
-					"semi_transient": true,
+					"buffer": 2,
+					"file": "res/mainController.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18661,
+						"buffer_size": 7476,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								371,
-								371
+								1682,
+								1682
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": false,
 							"bh_regions":
 							[
 								"bh_tag",
@@ -1125,36 +1048,16 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1165,18 +1068,127 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 413.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "vars1.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1272,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								805,
+								805
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1184,7 +1196,102 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/anCont.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6415,
+								6415
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2982.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1207,11 +1314,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.490670059372,
 			1.0
 		],
 		"rows":
@@ -1271,7 +1385,7 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
