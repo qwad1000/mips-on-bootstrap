@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>test page</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="res/jquery-1.11.2.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<body>
+<div ng-app="" ng-controller="personController">
+
+Num <input type="number" ng-model="num"><br>
+Count: <input type="number" ng-model="count"><br>
+<br>
+<b>{{  fs(num, count)  }}</b><br><br>
+<b>{{  ft(num, count)  }}</b>
+
+<table>
+	
+	<tbody>
+	<tr>
+		<th  align="center">Десятично</th>
+		<th colspan="4" align="center">Двоичное п</th>
+	</tr>
+<tr>
+	<td>127 </td>
+	<td>01111111 </td>
+	<td>01111111 </td>
+	<td>01111111 </td>
+	<td><b>{{    DexToFillComplementBin(127,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(127,8)  ) }}</td>
+</tr>
+<tr>
+	<td>1 </td>
+	<td>00000001 </td>
+	<td>00000001 </td>
+	<td>00000001 </td>
+	<td><b>{{    DexToFillComplementBin(1,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(1,8)  ) }}</td>
+</tr>
+<tr>
+	<td>0 </td>
+	<td>00000000 </td>
+	<td>00000000 </td>
+	<td>00000000 </td>
+	<td><b>{{    DexToFillComplementBin(0,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(0,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-0 </td>
+	<td>10000000 </td>
+	<td>11111111 </td>
+	<td>--- </td>
+	<td><b>{{    DexToFillComplementBin(-0,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-0,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-1 </td>
+	<td>10000001 </td>
+	<td>11111110 </td>
+	<td>11111111 </td>
+	<td><b>{{    DexToFillComplementBin(-1,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-1,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-2 </td>
+	<td>10000010 </td>
+	<td>11111101 </td>
+	<td>11111110 </td>
+	<td><b>{{    DexToFillComplementBin(-2,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-2,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-3 </td>
+	<td>10000011 </td>
+	<td>11111100 </td>
+	<td>11111101 </td>
+	<td><b>{{    DexToFillComplementBin(-3,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-3,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-4 </td>
+	<td>10000100 </td>
+	<td>11111011 </td>
+	<td>11111100 </td>
+	<td><b>{{    DexToFillComplementBin(-4,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-4,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-5 </td>
+	<td>10000101 </td>
+	<td>11111010 </td>
+	<td>11111011 </td>
+	<td><b>{{    DexToFillComplementBin(-5,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-5,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-6 </td>
+	<td>10000110 </td>
+	<td>11111001 </td>
+	<td>11111010 </td>
+	<td><b>{{    DexToFillComplementBin(-6,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-6,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-7 </td>
+	<td>10000111 </td>
+	<td>11111000 </td>
+	<td>11111001 </td>
+	<td><b>{{    DexToFillComplementBin(-7,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-7,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-8 </td>
+	<td>10001000 </td>
+	<td>11110111 </td>
+	<td>11111000 </td>
+	<td><b>{{    DexToFillComplementBin(-8,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-8,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-9 </td>
+	<td>10001001 </td>
+	<td>11110110 </td>
+	<td>11110111 </td>
+	<td><b>{{    DexToFillComplementBin(-9,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-9,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-10 </td>
+	<td>10001010 </td>
+	<td>11110101 </td>
+	<td>11110110 </td>
+	<td><b>{{    DexToFillComplementBin(-10,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-10,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-11 </td>
+	<td>10001011 </td>
+	<td>11110100 </td>
+	<td>11110101 </td>
+	<td><b>{{    DexToFillComplementBin(-11,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-11,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-127 </td>
+	<td>11111111 </td>
+	<td>10000000 </td>
+	<td>10000001 </td>
+	<td><b>{{    DexToFillComplementBin(-127,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-127,8)  ) }}</td>
+</tr>
+<tr>
+	<td>-128 </td>
+	<td>--- </td>
+	<td>--- </td>
+	<td>10000000 </td>
+	<td><b>{{    DexToFillComplementBin(-128,8)   }}</b></td>
+	<td>{{ ComplementBinToDex(  DexToFillComplementBin(-128,8)  ) }}</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<script>
+function personController($scope) {
+    
+    $scope.num= "0000";
+    $scope.count = 8;
+
+	$scope.fs = function (d, n){
+		return DexToFillBin(d,n);
+	}
+
+	$scope.ft = function (d, n) {
+		return DexToFillComplementBin(d,n);
+	}
+
+	$scope.DexToFillComplementBin = function (d,n){
+		return DexToFillComplementBin(d,n);
+	}
+
+	/**
+	 * @return {number}
+	 */
+	$scope.ComplementBinToDex = function(d){
+		return ComplementBinToDex(d);
+	}
+}
+</script> 
+
+	<script src="res/emulator/utility.js"></script>
+</body>
+</html>
+

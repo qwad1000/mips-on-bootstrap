@@ -2,21 +2,26 @@
 function initRamHolder() {
     var ramHolder = {};
     ramHolder.ramMap = [];
-    ramHolder.getDex = function (index) {
-        return this.ramMap[index];
+
+    ramHolder.getDex = function (startIndex) {
+        return this.ramMap[startIndex];
     };
-    ramHolder.setDex = function (index, value) {
-        this.ramMap[index] = value;
+    ramHolder.setDex = function (startIndex, value) {
+        this.ramMap[startIndex] = value;
     };
-    ramHolder.setHex = function (index, value) {
-        this.ramMap[HexToDex(index)] = value;
+    ramHolder.setHex = function (startIndex, value) {
+        this.ramMap[HexToDex(startIndex)] = value;
     };
-    ramHolder.getHex = function (index) {
-        return this.ramMap[HexToDex(index)];
+    ramHolder.getHex = function (startIndex) {
+        return this.ramMap[HexToDex(startIndex)];
     };
     ramHolder.isClear = function () {
         return this.ramMap.length == 0;
     };
+    ramHolder.getMemorySize = function () {
+        // body...
+        return 0;
+    }
     return ramHolder;
 }
 
@@ -328,7 +333,6 @@ function initCommandParser() {
     return commandParser;
 }
 
-
 numberSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 /**
  * @param {String} code
@@ -605,8 +609,3 @@ function getSTImm(b) {
 }
 
 //endregion
-
-
-
-
-

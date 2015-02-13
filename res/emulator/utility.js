@@ -29,7 +29,7 @@ function HexToDex(h) {
  * @param {Number} d
  * @return {string}
  */
-function DexToBin(d){
+function DexToBin(d){           //todo: two's complement
     return d.toString(2);
 }
 
@@ -38,7 +38,7 @@ function DexToBin(d){
  * @param {String} b
  * @returns {Number}
  */
-function BinToDex(b){
+function BinToDex(b){           //todo: two's complement
     return parseInt(b,2);
 }
 
@@ -63,6 +63,57 @@ function DexToFillBin(d,count){
     }
     return b;
 }
+/**
+ * Converts binary number string b from two's complement to decimal value
+ * @param b
+ * @returns {number}
+ */
+function ComplementBinToDex(b){
+    if(b.charAt(0)==='1') {
+        b = b.replace(/0/g, 't');
+        b = b.replace(/1/g, '0');
+        b = b.replace(/t/g, '1');
+
+        return -(BinToDex(b) + 1);
+    }
+    return BinToDex(b);
+
+}
+
+/**
+ * Converts decimal number d into binary code. The length of binary code is count. 
+ * If d is negative result will be represented in two's complement.
+ * 
+ * @param {Number} d
+ * @param {Number} count
+ * @return {String}
+ */
+function DexToFillComplementBin(d,count){//warning: overflow can be
+    if(typeof d == "string"){
+        d = parseInt(d,10);
+    }
+
+    var isNegative = d < 0;
+    var b = "";
+
+    if(isNegative){
+        b = DexToBin(-d);
+        var length = b.length;
+        b = b.replace(/0/g,'t');
+        b = b.replace(/1/g,'0');
+        b = b.replace(/t/g,'1');
+
+        var t = BinToDex(b) + 1;
+
+        b = DexToFillBin(t, length);
+        b = generateString(count - b.length,'1') + b;
+    }else{
+        b = DexToFillBin(d, count);
+    }
+
+    return b;
+}
+
 
 /**
  *
@@ -78,7 +129,7 @@ function generateString(length,symbol){
     return result;
 }
 /**
- *
+ * Separating binary number string by spaces every 4 chars
  * @param {String} b
  * @return {String}
  */
@@ -104,6 +155,11 @@ function integerDivision(x,y){
     return x/y>>0;
 }
 
+/**
+ * Fills hex string to length
+ * @param {string} h      string with number in hex format
+ * @param {number} length length to what h will be expanded
+ */
 function HexToFillHex(h, length){ //test
     var hlength = h.length;
     var concatStr = "";

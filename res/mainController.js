@@ -2,7 +2,7 @@ var app = angular.module("MIPS-app",[]);
 
 var editor = ace.edit("editor");
 editor.getSession().setMode("ace/mode/mips");
-editor.setValue("add $t3 $t1 $t2");
+editor.setValue("addi $t3 $zero 255");
 editor.gotoLine(0);
 
 app.config(function($interpolateProvider) {
@@ -63,6 +63,8 @@ someEDXFounder.getState = function () {
 
 var exerciseVar = 0;
 var exercisePath = "vars1.json";
+
+
 
 app.controller ("testController" , function($scope, $http) {
 	var demoCPU = initDemoCPU();
@@ -208,6 +210,8 @@ app.controller ("testController" , function($scope, $http) {
 			var rows = editor.session.getLength(); //fixme: indexes may be wrong if delete empty rows in ediotr
 			editor.session.setBreakpoint(rows - $scope.commandsCount);
 			$scope.commandsCount--;
+			console.log(demoCPU.commandParser.commandHolder.PC);
+			console.log($scope.programCounter);
 		}
 	}
 	$scope.reset = function (){//todo
@@ -215,6 +219,7 @@ app.controller ("testController" , function($scope, $http) {
 		demoCPU = initDemoCPU();
 		editor.session.clearBreakpoints();
 		$scope.registers = demoCPU.register.registerMap;
+		$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
 		$scope.ram = demoCPU.ram;
 		$scope.isEditing = true; //crunch;
 		$scope.commandsCount = -1;
