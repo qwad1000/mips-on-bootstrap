@@ -4,13 +4,17 @@
 	<meta charset="UTF-8"/>
 	<title>MIPS page</title>
 	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>-->
-	<script src="res/angular.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-	<link rel="stylesheet" type="text/css" href="res/bootstrap.min.css">
-	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-	<script src="res/jquery-1.11.2.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<script src="res/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="res/bootstrap.min.css">
+	<!--<script src="C:\Users\Сергій\.WebStorm9\system\extLibs\http_maxcdn.bootstrapcdn.com_bootstrap_3.2.0_js_bootstrap.js"></script>-->
+	<!--<script src="res/jquery-1.11.2.min.js"></script>-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body ng-controller="testController">
@@ -48,7 +52,7 @@
 				<div class="table-wrapper">
 					<table class="table table-striped table-condensed table-hovered table-bordered">
 						<thead>
-							<tr>
+							<tr class="bg-info">
 								<th>Name</th>
 								<th>Value</th>
 								<th>Name</th>
@@ -58,16 +62,16 @@
 						<tbody>
 							<tr>
 								<td>PC</td>
-								<td>[$ programCounter $]</td>
+								<td class="register-value-cell">[$ programCounter $]</td>
 								<td>?</td>
-								<td>todo</td>
+								<td class="register-value-cell">todo</td>
 							</tr>
 
 							<tr ng-repeat="row in dividedRegisters track by $index">
 								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>
-								<td>[$ returnRegister(row[0].indx, hexRegFmt) $]</td>
+								<td class="register-value-cell">[$ returnRegister(row[0].indx, hexRegFmt) $]</td>
 								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>
-								<td>[$ returnRegister(row[1].indx, hexRegFmt) $]</td>
+								<td class="register-value-cell">[$ returnRegister(row[1].indx, hexRegFmt) $]</td>
 							</tr>
 						</tbody>
 					</table>
@@ -91,7 +95,7 @@
 					<table class="table table-striped table-condensed table-bordered">
 						<thead>
 							<tr>
-								<th><span ng-show="ram.isClear()">EMPTY</span></th>
+								<th class="memory-empty"><span ng-show="ram.isClear()">EMPTY</span></th>
 								<th class="info" ng-repeat="num in [0,1,2,3,4,5,6,7]">
 								[$num$]
 							</th>
@@ -118,7 +122,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-sm-4">adsf	</div>
+			<div class="col-sm-4"> Some	</div>
 			<div class="col-sm-8">
 				<textarea class="result-area" ng-model="resultArea"></textarea>
 			</div>
@@ -128,7 +132,7 @@
 	<!-- ======  Scripts + CSS section  ======= -->
 
 	<script src="res/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-	<script src="res/example.js"></script>
+	<script src="res/ace-config.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/new-ide.css">
 	<script src="res/emulator/mips.js"></script>
