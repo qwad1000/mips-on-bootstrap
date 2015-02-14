@@ -3,25 +3,57 @@ function initRamHolder() {
     var ramHolder = {};
     ramHolder.ramMap = [];
 
-    ramHolder.getDex = function (startIndex) {
-        return this.ramMap[startIndex];
+    ramHolder.getDex = function (dexAddress) {
+        var value = this.ramMap[dexAddress];
+        if(value !== undefined){
+            return value;
+        }
+        return 0;
     };
-    ramHolder.setDex = function (startIndex, value) {
-        this.ramMap[startIndex] = value;
+    ramHolder.setDex = function (dexAddress, value) {
+        if(value !== 0) {
+            this.ramMap[dexAddress] = value;
+        }else{
+            delete this.ramMap[dexAddress]; //warning: may be reducing next indexes of array elements
+        }
     };
     ramHolder.setHex = function (startIndex, value) {
-        this.ramMap[HexToDex(startIndex)] = value;
+        this.setDex(HexToDex(startIndex),value);
     };
     ramHolder.getHex = function (startIndex) {
-        return this.ramMap[HexToDex(startIndex)];
+        this.getDex(HexToDex(startIndex));
     };
+
+    ramHolder.getHexWord = function (hexAddress) {
+        return ramHolder.getDexWord(HexToDex(hexAddress));
+    };
+    ramHolder.setHexWord = function (hexAddress, value){
+        return ramHolder.setDexWord(HexToDex(hexAddress), value);
+    };
+    ramHolder.getDexWord = function (decAddress) {
+        var b = "";
+        for(var i=0; i<4; i++){
+            var d = this.getDex(decAddress + i);
+            b += DexToFillBin(d, 8);
+        }
+        return ComplementBinToDex(b);
+    };
+    ramHolder.setDexWord = function(dexAddress, value) {
+        var b = DexToFillComplementBin(value, 32);
+        for(var i=0; i<4; i++){
+            var partb = b.slice(8*i, 8*(i+1));
+            var y = BinToDex(partb);
+            ramHolder.setDex(dexAddress + i, y);
+        }
+    };
+
     ramHolder.isClear = function () {
         return this.ramMap.length == 0;
     };
     ramHolder.getMemorySize = function () {
         // body...
         return 0;
-    }
+    };
     return ramHolder;
 }
 
@@ -168,53 +200,69 @@ cMiddle = {
     'bltzal': "10000"
 };
 
+//TSImmGroup = ['addi','addiu','andi','ori','slti','sltiu','xori']
 function convertTSImm(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[2]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5)
-        + DexToFillBin(parseInt(splitedCode[3]), 16);
+    return DexToFillBin(getRegisterCode(splitedCode[2]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillComplementBin(parseInt(splitedCode[3]), 16);//
 }
-
+//DSTGroup = ['add','addu','and','or','sllv','slt','sltu','srlv','sub','subu','xor']
 function convertDST(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[2]), 5) + DexToFillBin(getRegisterCode(splitedCode[3]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5);
+    return DexToFillBin(getRegisterCode(splitedCode[2]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[3]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[1]), 5);
 }
-
+//SOffGroup = ['bgez','bgezal','bgtz','blez','bltz','bltzal']
 function convertSOff(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[1]), 5) + cMiddle[splitedCode[0]] + DexToFillBin(splitedCode[2], 16);
+    return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + cMiddle[splitedCode[0]]
+        + DexToFillBin(splitedCode[2], 16);
 }
-
+//STGroup = ['div','divu','mult','multu']
 function convertST(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(getRegisterCode(splitedCode[2]), 5);
+    return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[2]), 5);
 }
-
+//STOffGroup = ['beq','bne']
 function convertSTOff(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(getRegisterCode(splitedCode[2]), 5) + DexToFillBin(getRegisterCode(splitedCode[3]), 16);
+    return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[2]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[3]), 16);
 }
-
+//TargetGroup=['j','jal']
 function convertTarget(splitedCode) {
     return DexToFillBin(splitedCode[1], 26);
 }
-
+//TOffSGroup = ['lw','sw','lb','sb']
 function convertTOffS(splitedCode) {
     var offS = splitedCode[2];
     var offSArr = offS.split("("); 
     offSArr[1] = offSArr[1].substring(0, offSArr[1].length - 1);
-    return DexToFillBin(getRegisterCode(offSArr[1]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(offSArr[0], 16);
+    return DexToFillBin(getRegisterCode(offSArr[1]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillComplementBin(offSArr[0], 16);
 }
-
+//SorDGroup = ['mfhi','mflo','jr']
 function convertSorD(splitedCode) {
     return DexToFillBin(getRegisterCode(splitedCode[1]), 5);
 }
+//TImmGroup = ['lui']
 function convertTImm(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(splitedCode[2], 16);
+    return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillComplementBin(splitedCode[2], 16);
 }
-
+//commandDTHGroup = ['sll','sra','srl']
 function convertDTH(splitedCode) {
-    return DexToFillBin(getRegisterCode(splitedCode[2]), 5) + DexToFillBin(getRegisterCode(splitedCode[1]), 5) + DexToFillBin(splitedCode[3], 5);
+    return DexToFillBin(getRegisterCode(splitedCode[2]), 5)
+        + DexToFillBin(getRegisterCode(splitedCode[1]), 5)
+        + DexToFillBin(splitedCode[3], 5);
 }
 
 var commandRegExp = new RegExp("(,| )");
 
 /*commandTSImmGroup = ['addi','addiu','andi','ori','slti','sltiu','xori'];
- commandDSTGroup = ['add','addu','and','or','sllv','slt','sltu','srlv','sub','subu','xor'];
+ commandDSTGroup = ['add','addu','and','or','sllv','slt','sltu','srlv',
+                    'sub','subu','xor'];
  commandSOffGroup = ['bgez','bgezal','bgtz','blez','bltz','bltzal'];
  commandSTGroup = ['div','divu','mult','multu'];
  commandSTOffGroup = ['beq','bne'];
@@ -414,22 +462,26 @@ function initZeroStartArray() {
     //add
     arr["100000"] = function (b, registerHolder) {
         var values = getDST(b);
-        registerHolder.set(values[0], registerHolder.get(values[1]) + registerHolder.get(values[2]));
+        registerHolder.set(values[0],
+            registerHolder.get(values[1]) + registerHolder.get(values[2]));
     };
     //addu
     arr["100001"] = function (b, registerHolder) {
         var values = getDST(b);
-        registerHolder.set(values[0], registerHolder.get(values[1]) + registerHolder.get(values[2]));
+        registerHolder.set(values[0],
+            registerHolder.get(values[1]) + registerHolder.get(values[2]));
     };
     //and
     arr["100100"] = function (b, registerHolder) {
         var values = getDST(b);
-        registerHolder.set(values[0], registerHolder.get(values[1]) & registerHolder.get(values[2]));
+        registerHolder.set(values[0],
+            registerHolder.get(values[1]) & registerHolder.get(values[2]));
     };
     //slt
     arr["101010"] = function (b, registerHolder) {
         var values = getDST(b);
-        registerHolder.set(values[0], registerHolder.get(values[1]) < registerHolder.get(values[2] ? 1 : 0));
+        registerHolder.set(values[0],
+            registerHolder.get(values[1]) < registerHolder.get(values[2] ? 1 : 0));
     };
     //sltu
     arr["101011"] = function (b, registerHolder) {
@@ -492,7 +544,7 @@ function initAccArray() {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 32);
+        var mult = DexToFillBin(s * t, 32); //fixme: s*t will be 64bit  ????
         var mult1 = mult.substring(0, 16);
         var mult2 = mult.substring(16);
         alu.lo = BinToDex(mult2);
@@ -503,7 +555,7 @@ function initAccArray() {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 32);
+        var mult = DexToFillBin(s * t, 32); //fixme: s*t will be 64bit ???
         var mult1 = mult.substring(0, 16);
         var mult2 = mult.substring(16);
         alu.lo = BinToDex(mult2);
@@ -553,7 +605,7 @@ function initHardArray() {
     //sw
     arr['101011'] = function (b,registerHolder, ramHolder, commandRamHolder){
           var values = getTOffS(b);
-          ramHolder.setDex(values[2]+registerHolder.get(values[1]),
+          ramHolder.setDexWord(values[2]+registerHolder.get(values[1]),
             registerHolder.get(values[0]));
           /*ramHolder.setDex(registerHolder.get(values[0])+values[2], 
             registerHolder.get(values[1]));*/
@@ -561,7 +613,8 @@ function initHardArray() {
     //lw
     arr['100011'] = function (b,registerHolder, ramHolder, commandRamHolder) {
         var values = getTOffS(b);
-        registerHolder.set(values[0],ramHolder.getDex(values[2]+registerHolder.get(values[1])));
+        registerHolder.set(values[0],
+            ramHolder.getDexWord(values[2]+registerHolder.get(values[1])));
     };
     return arr;
 }
@@ -580,7 +633,7 @@ function getDST(b) {
  * @returns {*[]} T,S,Offset
  */
 function getTOffS(b){
-    return [BinToDex(b.substring(11,16)),BinToDex(b.substring(6,11)),BinToDex(b.substring(16))];
+    return [BinToDex(b.substring(11,16)),BinToDex(b.substring(6,11)),ComplementBinToDex(b.substring(16))];
 }
 /**
  *
@@ -605,7 +658,7 @@ function getST(b) {
  * @returns {*[]} S,T,Imm
  */
 function getSTImm(b) {
-    return [BinToDex(b.substring(6, 11)), BinToDex(b.substring(11, 16)), BinToDex(b.substring(16))];
+    return [BinToDex(b.substring(6, 11)), BinToDex(b.substring(11, 16)), ComplementBinToDex(b.substring(16))];
 }
 
 //endregion

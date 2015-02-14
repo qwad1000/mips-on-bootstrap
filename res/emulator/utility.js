@@ -29,7 +29,7 @@ function HexToDex(h) {
  * @param {Number} d
  * @return {string}
  */
-function DexToBin(d){           //todo: two's complement
+function DexToBin(d) {
     return d.toString(2);
 }
 
@@ -38,12 +38,12 @@ function DexToBin(d){           //todo: two's complement
  * @param {String} b
  * @returns {Number}
  */
-function BinToDex(b){           //todo: two's complement
+function BinToDex(b){
     return parseInt(b,2);
 }
 
 /**
- *
+ * Converts positive decimal d into binary with extending it to count bits
  * @param {Number} d
  * @param {Number} count
  * @return {String}
@@ -97,7 +97,7 @@ function DexToFillComplementBin(d,count){//warning: overflow can be
     var b = "";
 
     if(isNegative){
-        b = DexToBin(-d);
+        b = (-d).toString(2);
         var length = b.length;
         b = b.replace(/0/g,'t');
         b = b.replace(/1/g,'0');
@@ -158,12 +158,13 @@ function integerDivision(x,y){
 /**
  * Fills hex string to length
  * @param {string} h      string with number in hex format
- * @param {number} length length to what h will be expanded
+ * @param {number} count length to what h will be expanded
+ * @return {string}
  */
-function HexToFillHex(h, length){ //test
-    var hlength = h.length;
+function HexToFillHex(h, count){ //test
+    var length = h.length;
     var concatStr = "";
-    for(var i=0; i<length - hlength; i++){
+    for(var i=0; i<count - length; i++){
         concatStr = concatStr + "0";
     }
     return concatStr + h;

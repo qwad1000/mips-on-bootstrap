@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"parse",
+				"parseInt〔function〕"
+			],
+			[
+				"type",
+				"typeof〔keyword〕"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"pro",
+				"programCounter"
+			],
+			[
+				"comman",
+				"commandHolder"
+			],
+			[
+				"ad",
+				"adress"
+			],
+			[
+				"ke",
+				"keys"
+			],
+			[
+				"mem",
+				"memory"
+			],
+			[
+				"re",
+				"registers"
+			],
+			[
+				"va",
+				"variants"
+			],
+			[
+				"res",
+				"response〔argument〕"
+			],
+			[
+				"json",
+				"jsonCode"
+			],
+			[
 				"exe",
 				"exerciseVar〔variable〕"
 			],
@@ -100,10 +148,6 @@
 				"hlength"
 			],
 			[
-				"mem",
-				"memoryTableSize"
-			],
-			[
 				"memo",
 				"memoryTableSize"
 			],
@@ -146,10 +190,6 @@
 			[
 				"col",
 				"console"
-			],
-			[
-				"re",
-				"returnMemoryBlock"
 			],
 			[
 				"par",
@@ -236,16 +276,8 @@
 				"length"
 			],
 			[
-				"fun",
-				"function"
-			],
-			[
 				"for",
 				"forEach"
-			],
-			[
-				"res",
-				"resultArea"
 			],
 			[
 				"wi",
@@ -360,21 +392,15 @@
 	"buffers":
 	[
 		{
-			"contents": "Замеченные баги:\n* таки надо писать команды в память, а не в отдельный холдер\n* labels\n* tests\n\ndone:\n\n\nlow-priority:\nпеределать модель памяти",
-			"file": "todo.md",
-			"file_size": 149,
-			"file_write_time": 130672145552892503,
+			"file": "res/emulator/mips_constants.js",
 			"settings":
 			{
-				"buffer_size": 142,
+				"buffer_size": 670,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<!DOCTYPE html>\n<html ng-app=\"MIPS-app\">\n<head>\n	<meta charset=\"UTF-8\"/>\n	<title>MIPS page</title>\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js\"></script>-->\n	<script src=\"res/angular.min.js\"></script>\n	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n	<!--<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">-->\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/bootstrap.min.css\">\n	<!--<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>-->\n	<script src=\"res/jquery-1.11.2.min.js\"></script>\n	<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>\n</head>\n\n<body ng-controller=\"testController\">\n	<div class=\"page-wrapper container-fluid\">\n		<div class=\"row main-part-wrapper\">\n			<div class=\"col-sm-4 column\">\n				<button type=\"button\" class=\"btn btn-success btn-block btn-sm\" ng-click=\"loadInfo()\">[$ loadBtnText $]</button>\n				<div class=\"editor-wrapper\">\n					<div id=\"editor\" class=\"code-editor\" ng-model=\"codeArea\"></div>\n				</div>\n				<div class=\"btn-group-sm btn-group-justified\" ng-hide=\"isEditing\">\n					<a type=\"button\" class=\"btn btn-primary\" ng-click=\"runConvert()\" ng-disabled=\"commandsCount==0\">Run</a>\n					<a type=\"button\" class=\"btn btn-default\" ng-click=\"runStep()\" ng-disabled=\"commandsCount==0\">Step</a>\n					<a type=\"button\" class=\"btn btn-danger\" ng-click=\"reset()\">Reset</a>\n					<div class=\"btn-group\">\n						<button type=\"button\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">\n							Initial state <span class=\"caret\"></span>\n						</button>\n						<ul class=\"dropdown-menu\" role=\"menu\" >\n							<li><a href=\"#\">No test</a></li>\n							<li class=\"divider\"></li>\n							<li ng-repeat=\"val in exercise.tests\">\n								<button class=\"btn\" ng-click=\"testClick(val.id)\">\n								<span class=\"glyphicon glyphicon-ok\" ng-show=\"val.passed\"></span>\n								<span class=\"glyphicon glyphicon-remove\" ng-hide=\"val.passed || val.passed == undefined\"></span>\n								 [$val.title$]</button>\n							</li>\n						</ul>\n					</div>\n				</div>\n			</div>\n\n			<!-- registers table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-hovered table-bordered\">\n						<thead>\n							<tr>\n								<th>Name</th>\n								<th>Value</th>\n								<th>Name</th>\n								<th>Value</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr>\n								<td>PC</td>\n								<td>[$ programCounter $]</td>\n								<td>?</td>\n								<td>todo</td>\n							</tr>\n\n							<tr ng-repeat=\"row in dividedRegisters track by $index\">\n								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>\n								<td>[$ returnRegister(row[0].indx, hexRegFmt) $]</td>\n								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>\n								<td>[$ returnRegister(row[1].indx, hexRegFmt) $]</td>\n							</tr>\n						</tbody>\n					</table>\n				</div>\n				<div class=\"number-type-wrapper\">\n					<label>Register value format:</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"dec\" ng-model=\"hexRegFmt\">\n						Dec\n					</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"number-type\" value=\"hex\" ng-model=\"hexRegFmt\" >\n						Hex\n					</label>\n				</div>\n			</div>\n\n			<!-- memory table column -->\n			<div class=\"col-sm-4 column\">\n				<div class=\"table-wrapper\">\n					<table class=\"table table-striped table-condensed table-bordered\">\n						<thead>\n							<tr>\n								<th><span ng-show=\"ram.isClear()\">EMPTY</span></th>\n								<th class=\"info\" ng-repeat=\"num in [0,1,2,3,4,5,6,7]\">\n								[$num$]\n							</th>\n							</tr>\n						</thead>\n						<tbody>\n							<tr ng-repeat=\"num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]\">\n								<th class=\"info\">[$ \"0x\" + (memoryShift + num*8).toString(16).toUpperCase() $]</th>\n								<!--todo: 8 -> cols-->\n								<td class=\"memory-cell\" ng-repeat=\"inf in [0,1,2,3,4,5,6,7]\">\n									[$ returnMemoryValue(memoryShifts[num][inf],hexRegFmt) $]\n								</td>\n							</tr>\n						</tbody>\n					</table>\n					\n				</div>\n				<div>\n					<label>Смещение (hex):</label>\n					<input type=\"number\" ng-model=\"memoryShift\">\n					<button class=\"btn btn-sm btn-success\" ng-click=\"changeMemoryShift()\">Look through</button>\n				</div>\n			</div>\n		</div>\n\n		<div class=\"row\">\n			<div class=\"col-sm-4\">adsf	</div>\n			<div class=\"col-sm-8\">\n				<textarea class=\"result-area\" ng-model=\"resultArea\"></textarea>\n			</div>\n		</div>\n	</div>\n\n	<!-- ======  Scripts + CSS section  ======= -->\n\n	<script src=\"res/src-noconflict/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\n	<script src=\"res/example.js\"></script>\n\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/new-ide.css\">\n	<script src=\"res/emulator/mips.js\"></script>\n	<script src=\"res/emulator/mips_constants.js\"></script>\n	<script src=\"res/emulator/utility.js\"></script>\n	<script src=\"res/mainController.js\"></script>\n	\n</body>\n</html>",
 			"file": "index-bootstrap.html",
-			"file_size": 5161,
-			"file_write_time": 130673497550992709,
 			"settings":
 			{
 				"buffer_size": 5014,
@@ -382,18 +408,26 @@
 			}
 		},
 		{
-			"file": "res/mainController.js",
+			"file": "test.html",
 			"settings":
 			{
-				"buffer_size": 7476,
+				"buffer_size": 3457,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "vars1.json",
+			"file": "res/mainController.js",
 			"settings":
 			{
-				"buffer_size": 1272,
+				"buffer_size": 8053,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "res/emulator/utility.js",
+			"settings":
+			{
+				"buffer_size": 3665,
 				"line_ending": "Windows"
 			}
 		},
@@ -416,8 +450,20 @@
 		"selected_items":
 		[
 			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
 				"side",
 				"View: Toggle Side Bar"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
 			],
 			[
 				"insta",
@@ -460,10 +506,6 @@
 				"Preferences: GutterColor Settings – User"
 			],
 			[
-				"rein",
-				"Indentation: Reindent Lines"
-			],
-			[
 				"ma",
 				"Set Syntax: Markdown"
 			],
@@ -474,10 +516,6 @@
 			[
 				"jso",
 				"Set Syntax: JSON"
-			],
-			[
-				"rei",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"reinde",
@@ -652,7 +690,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 472.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -675,13 +713,19 @@
 	"expanded_folders":
 	[
 		"/E/workspace/web/mips",
-		"/E/workspace/web/mips/res"
+		"/E/workspace/web/mips/res",
+		"/E/workspace/web/mips/res/emulator"
 	],
 	"file_history":
 	[
+		"/E/workspace/web/mips/res/emulator/mips.js",
+		"/D/utility.js",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Sublimall/Sublimall.sublime-settings",
+		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/Default (Windows).sublime-keymap",
+		"/E/workspace/web/mips/todo.md",
+		"/E/workspace/web/mips/vars1.json",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/Sublimall.sublime-settings",
-		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Sublimall/Sublimall.sublime-settings",
 		"/E/workspace/web/mips/res/mainController.js",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/ColorHighlighter.sublime-settings",
@@ -690,7 +734,6 @@
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/Color Highlighter/Default.sublime-keymap",
 		"/C/Users/Сергій/AppData/Roaming/Sublime Text 3/Packages/User/GutterColor.sublime-settings",
-		"/E/workspace/web/mips/res/emulator/mips.js",
 		"/C/Users/Сергій/Downloads/doomlegacy_1.44_alpha5_win32/doomlegacy_1.44_alpha5_win32/legacy.wad",
 		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/vars1.json",
 		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/anCont.js",
@@ -698,7 +741,6 @@
 		"/C/Users/Сергій/Desktop/d74092e5a39f4812bee5aedeab133d0d.xml",
 		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/exp.js",
 		"/E/workspace/web/mips/index.html",
-		"/E/workspace/web/mips/todo.md",
 		"/E/workspace/web/mips/index-bootstrap.html",
 		"/E/workspace/web/mips/.gitignore",
 		"/E/workspace/web/mips/.gitattributes",
@@ -715,7 +757,7 @@
 		"/E/workspace/web/mips/res/src-noconflict/ace.js",
 		"/E/workspace/web/mips/registers_table.html",
 		"/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/exp.py",
-		"/E/workspace/web/mips/res/example.js",
+		"/E/workspace/web/mips/res/ace-config.js",
 		"/E/workspace/web/mips/res/src-noconflict/ext-modelist.js",
 		"/E/workspace/web/mips/tomo.md",
 		"/E/backup/2014-06-22/Documents/Toad Data Modeler/GeneratedScripts/Generated.SQL",
@@ -791,6 +833,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\{\\{(.*)\\}\\}",
+			"<td>\\{\\{",
+			"</td>\\n</td>",
+			"<td>{{  }}</td>",
+			"</tr>",
+			"<td align=\"right\">",
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+			"ram",
+			"index",
+			"DexToBin",
+			"programCounter",
+			"initCommandParser",
+			"getRegisterCode",
+			"registersName",
+			"\"m\":\\{(.*\\n.*)\\}",
+			")",
+			"(",
+			"(\\(*\\))",
 			"$http",
 			"mult",
 			"exercisePath",
@@ -822,9 +882,32 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"<b>\\{\\{ \\1 \\}\\}</b>",
+			"<td style='text: bold'>",
+			"</td>\\n</tr>",
+			"\\n</td>",
+			"<td>{{ DexToFillComplementBin([],8) }}</td>",
+			"\\t<td>{{  }}</td>\\n</td>",
+			"\\t<td>{{  }}</td>\\n</tr>",
+			"<td>",
+			"",
+			"startIndex",
+			"\"registers\":\\{\\n\\t \\1 \\n\\},\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\\n\"start\": null, \\n\\t\\t\\t\\t\\t\\t\\t\"end\": null\\n\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\},\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null, \\n\\t\\t\\t\\t\\t\\t\\t\"end\": null\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\}\\},\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null, \\n\\t\\t\\t\\t\\t\\t\\t\"end\": null\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\},\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null, \\n\\t\\t\\t\\t\\t\\t\\t\"end\": null\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\},\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null \\n\\t\\t\\t\\t\\t\\t\\t\"end\": null\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\}\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null \\n\"end\": null\\}",
+			"\\t\\t\\t\\t\\t\\t\"registers\":\\{\\n\\t \\1 \\n\\}\\n\\t\\t\\t\\t\\t\\t \"memory\": \\{\"start\": null \\n\"end\": null\\}",
+			"\"registers\":\\{\\n\\t \\1 \\n\\}",
+			"\"registers\":\\{\\n\\t \\& \\n\\}",
+			"\"registers\":\\{\\n\\t & \\n\\}",
+			"}",
+			"\"m\":{",
+			"asdf",
 			"exerciseVar",
 			"$]",
 			"[$"
@@ -838,24 +921,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "todo.md",
+					"file": "res/emulator/mips_constants.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 142,
+						"buffer_size": 670,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								95,
-								95
+								652,
+								652
 							]
 						],
 						"settings":
@@ -864,36 +947,36 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -909,25 +992,26 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -943,8 +1027,8 @@
 						"selection":
 						[
 							[
-								91,
-								91
+								0,
+								5014
 							]
 						],
 						"settings":
@@ -953,36 +1037,36 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -998,43 +1082,43 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 773.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "res/mainController.js",
+					"file": "test.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7476,
+						"buffer_size": 3457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1682,
-								1682
+								801,
+								801
 							]
 						],
 						"settings":
@@ -1043,170 +1127,253 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 413.0,
+						"translation.y": 246.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "vars1.json",
+					"file": "res/mainController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1272,
+						"buffer_size": 8053,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								805,
-								805
+								4186,
+								4186
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"auto_complete": true,
+							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1736.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "res/emulator/utility.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2508,
+								2508
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1145.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "/C/Users/Сергій/Documents/GitHub/MIPSXBlock/exp/static/js/src/anCont.js",
 					"semi_transient": false,
 					"settings":
@@ -1218,8 +1385,8 @@
 						"selection":
 						[
 							[
-								6415,
-								6415
+								5530,
+								5530
 							]
 						],
 						"settings":
@@ -1228,36 +1395,36 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -1273,25 +1440,25 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2982.0,
+						"translation.y": 2367.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1299,7 +1466,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 21.0
 	},
 	"input":
 	{
@@ -1314,18 +1481,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.490670059372,
 			1.0
 		],
 		"rows":
@@ -1375,11 +1535,11 @@
 	},
 	"select_symbol":
 	{
-		"height": 58.0,
+		"height": 392.0,
 		"selected_items":
 		[
 		],
-		"width": 392.0
+		"width": 416.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1388,7 +1548,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 187.0,
 	"status_bar_visible": true,
 	"template_settings":

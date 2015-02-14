@@ -2,7 +2,10 @@ var app = angular.module("MIPS-app",[]);
 
 var editor = ace.edit("editor");
 editor.getSession().setMode("ace/mode/mips");
-editor.setValue("addi $t3 $zero 255");
+editor.setValue("addi $t3 $zero 255\n\
+addi $t2 $zero 0x1A\n\
+sw $t3 0($t2)\n\
+lw $t4 1($t2)");
 editor.gotoLine(0);
 
 app.config(function($interpolateProvider) {
@@ -21,44 +24,44 @@ someEDXFounder.getState = function () {
 		return JSON.stringify(jsonObject);
 	};
 
-	someEDXFounder.setState = function (jsonCode){
-		var result = JSON.parse(jsonCode);
-		editor.setValue(result["code"]);
-		exerciseVar = parseInt(result["exVar"]);
-		exercisePath = result["exPath"];
-		console.log(exerciseVar);
-		console.log(exercisePath);
-		
-		$http.get(exercisePath)
-		.success( function (response) { 
-			$scope.exercise = response[exerciseVar]; 
+someEDXFounder.setState = function (jsonCode){
+	var result = JSON.parse(jsonCode);
+	editor.setValue(result["code"]);
+	exerciseVar = parseInt(result["exVar"]);
+	exercisePath = result["exPath"];
+	console.log(exerciseVar);
+	console.log(exercisePath);
+
+	$http.get(exercisePath)
+		.success( function (response) {
+			$scope.exercise = response[exerciseVar];
 		}).error( function () {
-			$scope.resultArea += "Some error loading tests from" + exercisePath + "var:" + exerciseVar; 
+			$scope.resultArea += "Some error loading tests from" + exercisePath + "var:" + exerciseVar;
 			$scope.exercise = initialObject;
 		});
-	};
+};
 
-	someEDXFounder.gradeFunction = function () {
-		console.log($scope.exercise.tests);
-		var count = $scope.exercise.tests.length;
-		var goodCount = 0;
-		for (var id=0;id<count;id++){
-			var test = $scope.exercise.tests[id];
-			console.log(test.passed);
-			if (test.passed != false){
-				$scope.testClick(id);
-			}
-			if (test.passed == true){
-				goodCount = goodCount + 1;
-			}
+someEDXFounder.gradeFunction = function () {
+	console.log($scope.exercise.tests);
+	var count = $scope.exercise.tests.length;
+	var goodCount = 0;
+	for (var id=0;id<count;id++){
+		var test = $scope.exercise.tests[id];
+		console.log(test.passed);
+		if (test.passed != false){
+			$scope.testClick(id);
 		}
-		var jsonResult = {
-			"count": count,
-			"goodCount":goodCount
-		};
-		console.log(jsonResult);
-		return JSON.stringify(jsonResult);
+		if (test.passed == true){
+			goodCount = goodCount + 1;
+		}
+	}
+	var jsonResult = {
+		"count": count,
+		"goodCount":goodCount
 	};
+	console.log(jsonResult);
+	return JSON.stringify(jsonResult);
+};
 
 
 var exerciseVar = 0;
@@ -84,15 +87,14 @@ app.controller ("testController" , function($scope, $http) {
 
 	$scope.commandsCount = -1;
 	$scope.dividedRegisters = prepareRegistersTable(2, $scope.registers, $scope.registersName);
-	var memoryTableSize = {width: 8, height: 17}
+	var memoryTableSize = {width: 8, height: 17};
 	$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);
 
 	//crunch
 	$http.get(exercisePath)
 		.success( function (response) { 
 			var variants = response.variants;
-			var ex = variants[0];
-			$scope.exercise = ex;
+			$scope.exercise = variants[0];
 		}).error( function () {
 			$scope.resultArea += "Some error loading tests from" + exercisePath + "var:" + exerciseVar; 
 			//$scope.exercise = initialObject;
@@ -105,7 +107,7 @@ app.controller ("testController" , function($scope, $http) {
 		var newlength = arr.length/columns;
 		
 		for(var i=0; i<newlength; i++){ //fixme: if columns is odd
-			var newnewArr = []
+			var newnewArr = [];
 			for(var j=0; j<columns; j++){
 				var index = i+newlength*j;
 				var obj = {name:names[index], indx:index};
@@ -121,7 +123,7 @@ app.controller ("testController" , function($scope, $http) {
 			return "0x" + $scope.registers[index].toString(16).toUpperCase();		
 		}
 		return $scope.registers[index];
-	}
+	};
 
 	function prepareMemoryTable(shift, rows, cols){
 		if(typeof shift == 'string'){
@@ -150,11 +152,12 @@ app.controller ("testController" , function($scope, $http) {
 			m = HexToFillHex(m, 2);
 		}
 		return m;
-	}
+	};
 
 	$scope.changeMemoryShift = function(){
-		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,memoryTableSize.height, memoryTableSize.width);
-	}
+		$scope.memoryShifts = prepareMemoryTable($scope.memoryShift,
+			memoryTableSize.height, memoryTableSize.width);
+	};
 
 	$scope.loadInfo = function (){
 		if($scope.isEditing){
@@ -192,7 +195,7 @@ app.controller ("testController" , function($scope, $http) {
 			$scope.commandsCount = -1;
 		}
 
-	}
+	};
 	$scope.runConvert = function () {
 		for(var i=0; i<$scope.commandsCount; i++){
 			demoCPU.nextCommand();
@@ -201,19 +204,19 @@ app.controller ("testController" , function($scope, $http) {
 		console.log("состояние регистров под конец работы:");
 		console.log(demoCPU.register.registerMap);
 		console.log(demoCPU.ram.ramMap);
-	}
+	};
 	
 	$scope.runStep = function () {
 		if($scope.commandsCount>0){
 			demoCPU.nextCommand();
 			editor.session.clearBreakpoints();
-			var rows = editor.session.getLength(); //fixme: indexes may be wrong if delete empty rows in ediotr
+			var rows = editor.session.getLength(); //fixme: indexes may be wrong if delete empty rows in editor
 			editor.session.setBreakpoint(rows - $scope.commandsCount);
 			$scope.commandsCount--;
 			console.log(demoCPU.commandParser.commandHolder.PC);
 			console.log($scope.programCounter);
 		}
-	}
+	};
 	$scope.reset = function (){//todo
 		demoCPU = {};
 		demoCPU = initDemoCPU();
@@ -226,47 +229,35 @@ app.controller ("testController" , function($scope, $http) {
 		$scope.loadInfo();
 
 		console.log('mips cpu reseted');
-	}
-
-
-// var jsonTestText = '{\n"id": 0,\n'+
-// 	'"title":"Some exercise",\n'+
-// 	'"exercise":"store some value into a memory",\n'+
-// 	'"tests":[{"id": 0, "title":"Test1","start": [{"t1":123},{"t2":155}],"end": [{"t1": 123},{"t2": 128}]},'+
-// 	'{"id": 1, "title":"Test2","start": [{"t1":12},{"t2":13}],"end": [{"t1": 2},{"t2": 2}]}'+
-// 	']}'
-
-	//$scope.exercise = JSON.parse(jsonTestText);
+	};
 
 	$scope.testClick = function (id){
 		$scope.reset();
 		var test = $scope.exercise.tests[id];
 
-		angular.forEach(test.registers.start, function (item, i, arr){
-			var key = Object.keys(item)[0];
+		angular.forEach(test.registers.start, function (val, i, arr){
+			var key = Object.keys(val)[0];
 			var code = registerCode[key];
-			var val = item[key];
+			var val = val[key];
 			demoCPU.register.set(code, val);
 		});
-
 		if(test.memory.start != null){
-			angular.forEach(test.memory.start, function (item, i, arr){
-				var adress = Object.keys(item)[0];
-				var val = item[adress];
+			angular.forEach(test.memory.start, function (val, i, arr){
+				var address = Object.keys(val)[0];
+				var val = val[address];
 
-				demoCPU.ram.setHex(adress, val);
+				demoCPU.ram.setHexWord(address, val);
 			});
 		}
-		
 
 		$scope.runConvert();
 
 		var testPassed = true;
 
-		angular.forEach(test.registers.end, function (item, i, arr){
-			var key = Object.keys(item)[0];
+		angular.forEach(test.registers.end, function (val, i, arr) {
+			var key = Object.keys(val)[0];
 			var code = registerCode[key];
-			var val = item[key];
+			var val = val[key];
 			var currentVal = demoCPU.register.get(code);
 			if(currentVal != val){
 				testPassed = false;
@@ -274,11 +265,11 @@ app.controller ("testController" , function($scope, $http) {
 		});
 
 		if(test.memory.end != null){
-			angular.forEach(test.memory.end, function (item,i, key){
-				var adress = Object.keys(item)[0];
-				var val = item[adress];
+			angular.forEach(test.memory.end, function (val, i, key) {
+				var adress = Object.keys(val)[0];
+				var val = val[adress];
 
-				var currentVal = demoCPU.ram.getHex(adress);
+				var currentVal = demoCPU.ram.getHexWord(adress);
 				if(currentVal != val){
 					testPassed = false;
 				}
