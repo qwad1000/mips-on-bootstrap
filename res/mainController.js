@@ -75,7 +75,7 @@ app.controller ("testController" , function($scope, $http) {
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
 	$scope.ram = demoCPU.ram;
-	$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
+	//$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
 	$scope.registersName = registersName;
 	$scope.resultArea = "";
 	$scope.isEditing = true;
@@ -119,15 +119,32 @@ app.controller ("testController" , function($scope, $http) {
 	}
 
 	$scope.returnRegister = function(index, fmt){
-		if(fmt=='hex'){
-			return "0x" + $scope.registers[index].toString(16).toUpperCase();		
+		var value = 0;
+		if(typeof index == 'number'){
+			value = $scope.registers[index];
 		}
-		return $scope.registers[index];
+		if(typeof index == 'string'){
+			if(index === 'alu.hi'){
+				value = demoCPU.alu.hi;
+			}
+			if(index === 'alu.lo'){
+				value = demoCPU.alu.lo;
+			}
+			if(index === 'pc'){
+				// *4 is to emulate system pc. it is always multiple to 4 (memory alignment)
+				value = demoCPU.commandParser.commandHolder.PC * 4;
+			}
+		}
+		if(fmt=='hex'){
+			var strValue = BinToHex(DexToFillComplementBin(value,32)); //fixme negative positions
+			return '0x' + HexToFillHex(strValue, 8).toUpperCase();
+		}
+		return value;
 	};
 
 	function prepareMemoryTable(shift, rows, cols){
 		if(typeof shift == 'string'){
-			shift = parseInt(shift)
+			shift = parseInt(shift);
 		}
 		var arr = [];
 		for(var i=0; i<rows; i++){
@@ -214,7 +231,7 @@ app.controller ("testController" , function($scope, $http) {
 			editor.session.setBreakpoint(rows - $scope.commandsCount);
 			$scope.commandsCount--;
 			console.log(demoCPU.commandParser.commandHolder.PC);
-			console.log($scope.programCounter);
+			//console.log($scope.programCounter);
 		}
 	};
 	$scope.reset = function (){//todo
@@ -222,7 +239,7 @@ app.controller ("testController" , function($scope, $http) {
 		demoCPU = initDemoCPU();
 		editor.session.clearBreakpoints();
 		$scope.registers = demoCPU.register.registerMap;
-		$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
+		//$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
 		$scope.ram = demoCPU.ram;
 		$scope.isEditing = true; //crunch;
 		$scope.commandsCount = -1;

@@ -52,9 +52,15 @@
 	text-align: center;
 }
 
+.register-name-cell {
+	text-align: center;
+}
+
 .register-value-cell {
 	text-align: center;
 	min-width: 30%;
+	color: #555555;
+	font-family:  monospace;
 }
 
 .memory-empty{
@@ -63,6 +69,7 @@
 
 .memory-cell{
 	text-align: center;
+	font-family:  monospace;
 }
 .register-input {
 	padding: 0px;

@@ -5,13 +5,13 @@
 	<title>MIPS page</title>
 	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>-->
 	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+	<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 
 	<script src="res/angular.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="res/bootstrap.min.css">
-	<!--<script src="C:\Users\Сергій\.WebStorm9\system\extLibs\http_maxcdn.bootstrapcdn.com_bootstrap_3.2.0_js_bootstrap.js"></script>-->
-	<!--<script src="res/jquery-1.11.2.min.js"></script>-->
+	<script src="res/jquery-1.11.2.min.js"></script>
+	<script src="res/bootstrap.min.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -61,17 +61,24 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>PC</td>
-								<td class="register-value-cell">[$ programCounter $]</td>
-								<td>?</td>
+								<td class="register-name-cell">PC</td>
+								<td class="register-value-cell">[$ returnRegister('pc', hexRegFmt) $]</td>
+								<td class="register-name-cell">?</td>
 								<td class="register-value-cell">todo</td>
 							</tr>
 
 							<tr ng-repeat="row in dividedRegisters track by $index">
-								<td>r[$ row[0].indx $]/[$ row[0].name $]</td>
+								<td class="register-name-cell" >r[$ row[0].indx $]/[$ row[0].name $]</td>
 								<td class="register-value-cell">[$ returnRegister(row[0].indx, hexRegFmt) $]</td>
-								<td>r[$ row[1].indx $]/[$ row[1].name $]</td>
+								<td class="register-name-cell">r[$ row[1].indx $]/[$ row[1].name $]</td>
 								<td class="register-value-cell">[$ returnRegister(row[1].indx, hexRegFmt) $]</td>
+							</tr>
+
+							<tr>
+								<td class="register-name-cell">alu.hi</td>
+								<td class="register-value-cell"> [$ returnRegister('alu.hi', hexRegFmt) $]</td>
+								<td class="register-name-cell">alu.lo</td>
+								<td class="register-value-cell"> [$ returnRegister('alu.lo', hexRegFmt) $]</td>
 							</tr>
 						</tbody>
 					</table>
@@ -84,11 +91,11 @@
 					</label>
 					<label class="radio-inline">
 						<input type="radio" name="number-type" value="hex" ng-model="hexRegFmt" >
-						Hex
+						<abbr title="hex vals represent binary twos complement code
+						so there is no negative numbers">Hex</abbr>
 					</label>
 				</div>
 			</div>
-
 			<!-- memory table column -->
 			<div class="col-sm-4 column">
 				<div class="table-wrapper">
@@ -114,7 +121,7 @@
 					
 				</div>
 				<div>
-					<label>Смещение (hex):</label>
+					<label>Смещение (dec):</label>
 					<input type="number" ng-model="memoryShift">
 					<button class="btn btn-sm btn-success" ng-click="changeMemoryShift()">Look through</button>
 				</div>

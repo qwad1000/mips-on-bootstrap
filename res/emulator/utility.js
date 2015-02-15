@@ -169,3 +169,22 @@ function HexToFillHex(h, count){ //test
     }
     return concatStr + h;
 }
+
+/**
+ * @return {string}
+ */
+function BinToHex(b) {
+    var h = "";
+
+    if(b.length % 4 !== 0){
+        b = generateString(4 - b.length % 4, '0') + b;
+    }
+    var length = b.length;
+
+    for(var i=0; i<length; i+=4){
+        var bslice = b.slice(length-4-i, length-i);
+        var d = BinToDex(bslice);
+        h = DexToHex(d) + h;
+    }
+    return h;
+}

@@ -544,22 +544,22 @@ function initAccArray() {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 32); //fixme: s*t will be 64bit  ????
-        var mult1 = mult.substring(0, 16);
-        var mult2 = mult.substring(16);
+        var mult = DexToFillBin(s * t, 64); //fixme: s*t will be 64bit  ????
+        var mult1 = mult.substring(0, 32);
+        var mult2 = mult.substring(32);
         alu.lo = BinToDex(mult2);
-        alu.hi = BinToDex(mult1);
+        alu.hi = BinToDex(mult1);   //fixme: negative values
     };
     //multu
     arr['011010'] = function (b, registerHolder, alu) {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 32); //fixme: s*t will be 64bit ???
-        var mult1 = mult.substring(0, 16);
-        var mult2 = mult.substring(16);
+        var mult = DexToFillBin(s * t, 64); //fixme: s*t will be 64bit ???
+        var mult1 = mult.substring(0, 32);
+        var mult2 = mult.substring(32);
         alu.lo = BinToDex(mult2);
-        alu.hi = BinToDex(mult1);
+        alu.hi = BinToDex(mult1); //fixme: negative values
     };
 
     return arr;

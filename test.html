@@ -3,21 +3,20 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>test page</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-	<script src="res/jquery-1.11.2.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="res/angular.min.js"></script>
+	<script src="res/bootstrap.min.js"></script>
 </head>
 
 
 
 <body>
-<div ng-app="" ng-controller="personController">
+<div ng-app="app" ng-controller="personController">
 
-Num <input type="number" ng-model="num"><br>
+Num <input ng-model="num"><br>
 Count: <input type="number" ng-model="count"><br>
 <br>
 <b>{{  fs(num, count)  }}</b><br><br>
-<b>{{  ft(num, count)  }}</b>
+<b>{{  BinToHex(num)  }}</b>
 
 <table>
 	
@@ -168,7 +167,9 @@ Count: <input type="number" ng-model="count"><br>
 </div>
 
 <script>
-function personController($scope) {
+	var app = angular.module("app",[]);
+
+	app.controller("personController", function ($scope) {
     
     $scope.num= "0000";
     $scope.count = 8;
@@ -190,8 +191,15 @@ function personController($scope) {
 	 */
 	$scope.ComplementBinToDex = function(d){
 		return ComplementBinToDex(d);
+	};
+
+	/**
+	 * @return {string}
+	 */
+	$scope.BinToHex = function(b){
+		return BinToHex(b);
 	}
-}
+});
 </script> 
 
 	<script src="res/emulator/utility.js"></script>
