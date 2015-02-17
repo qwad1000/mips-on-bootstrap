@@ -189,8 +189,8 @@ app.controller ("testController" , function($scope, $http) {
 			for(var i=0; i<operations_list.length; i++){
 				var value = operations_list[i].trim();
 				if(value.length > 0){
-					var indexOf = value.indexOf(":");
-					if (indexOf != -1) {
+					/*var indexOf = value.indexOf(":");
+					if (indexOf != -1) {//todo:wtf??
 						var label = value.substring(0, indexOf);
 						demoCPU.commandParser.commandHolder.addLabel(label);
 						var command = value.substring(indexOf + 1);
@@ -199,17 +199,18 @@ app.controller ("testController" , function($scope, $http) {
 						} else {
 							return;
 						}
-					}
+					}*/
 					var binResult = demoCPU.command(value);
 					$scope.commandsCount++;
 					$scope.resultArea += BinToViewBin(binResult) + "\n";
 				}
 			}
-		}else{ //fixme: memory leaks??? todo: command deleting
+		}else{
 			$scope.isEditing = true;
 			$scope.loadBtnText = "Assemble & Load to CPU";
 			editor.setReadOnly(false);
 			$scope.commandsCount = -1;
+            demoCPU.commandParser.commandHolder.clear();
 		}
 
 	};
@@ -235,7 +236,6 @@ app.controller ("testController" , function($scope, $http) {
 		}
 	};
 	$scope.reset = function (){//todo
-		demoCPU = {};
 		demoCPU = initDemoCPU();
 		editor.session.clearBreakpoints();
 		$scope.registers = demoCPU.register.registerMap;
@@ -244,7 +244,6 @@ app.controller ("testController" , function($scope, $http) {
 		$scope.isEditing = true; //crunch;
 		$scope.commandsCount = -1;
 		$scope.loadInfo();
-
 		console.log('mips cpu reseted');
 	};
 

@@ -97,13 +97,20 @@ function initCommandRamHolder() {
         return this.PC;
     };
     commandRamHolder.addLabel = function (label) {
-        this.labels[label] = this.PC + 1;
+        console.log(this.commandCodeList.length+" з міткою "+label);
+        this.labels[label] = this.commandCodeList.length;
     };
     commandRamHolder.getLabel = function (label) {
-        return this.label[label];
+        console.log("Знаходимо мітку " + label);
+        return this.labels[label];
     };
     commandRamHolder.getCurrentPC = function () {
         return this.PC - 1;
+    };
+    commandRamHolder.clear = function(){
+        this.commandCodeList = [];
+        this.labels = [];
+        this.PC = 0;
     };
     return commandRamHolder;
 }
@@ -216,7 +223,7 @@ function convertDST(splitedCode) {
 function convertSOff(splitedCode) {
     return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
         + cMiddle[splitedCode[0]]
-        + DexToFillBin(splitedCode[2], 16);
+        + DexToFillComplementBin(splitedCode[2], 16);
 }
 //STGroup = ['div','divu','mult','multu']
 function convertST(splitedCode) {
@@ -227,7 +234,7 @@ function convertST(splitedCode) {
 function convertSTOff(splitedCode) {
     return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
         + DexToFillBin(getRegisterCode(splitedCode[2]), 5)
-        + DexToFillBin(getRegisterCode(splitedCode[3]), 16);
+        + DexToFillComplementBin(getRegisterCode(splitedCode[3]), 16);
 }
 //TargetGroup=['j','jal']
 function convertTarget(splitedCode) {
@@ -258,7 +265,9 @@ function convertDTH(splitedCode) {
         + DexToFillBin(splitedCode[3], 5);
 }
 
-var commandRegExp = new RegExp("(,| )");
+var commandRegExp = new RegExp(" ");
+
+var numberRegExp = new RegExp("^-?(0x[0-9A-F]+|[0-9]+)");
 
 /*commandTSImmGroup = ['addi','addiu','andi','ori','slti','sltiu','xori'];
  commandDSTGroup = ['add','addu','and','or','sllv','slt','sltu','srlv',
@@ -276,17 +285,19 @@ function initCommandParser() {
     var commandParser = {};
     commandParser.commandHolder = initCommandRamHolder();
     commandParser.createCommand = function (code) {
+        console.log(code);
         if (code.indexOf(':')>-1) {
             var labelWithCode = code.split(':');
-            code = labelWithCode[1];
-            var label = labelWithCode[0];
+            code = labelWithCode[1].trim();
+            var label = labelWithCode[0].trim();
             this.commandHolder.addLabel(label);
+            console.log("add label " + label);
             if (code.length < 2) {
                 return
             }
         }
         var splitedCode = code.split(commandRegExp);
-        splitedCode = splitedCode.filter(function (element) {
+        /*splitedCode = splitedCode.filter(function (element) {
             var b = true;
             if (element.length < 2) {
                 if (numberSet.indexOf(parseInt(element)) == -1) {
@@ -294,7 +305,7 @@ function initCommandParser() {
                 }
             }
             return b;
-        });
+        });*/
         return splitedCode;
     };
     commandParser.parse = function (splitedCode) {
@@ -331,7 +342,13 @@ function initCommandParser() {
             case 'blez':
             case 'bltz':
             case 'bltzal':
-                //TODO:відловлювання label
+                var offsetLabel = splitedCode[2];
+                if (!numberRegExp.test(offset)) {
+                    var currentCommandNumber = this.commandHolder.commandCodeList.length;
+                    var labelNumber = this.commandHolder.getLabel(offsetLabel);
+                    var offset = labelNumber - currentCommandNumber;
+                    splitedCode[2] = parseInt(offset);
+                }
                 return cStart[code] + convertSOff(splitedCode);
                 break;
             //ST Group
@@ -344,6 +361,13 @@ function initCommandParser() {
             //STOff Group
             case 'beq':
             case 'bne':
+                offsetLabel = splitedCode[3];
+                if (!numberRegExp.test(offset)) {
+                    currentCommandNumber = this.commandHolder.commandCodeList.length;
+                    labelNumber = this.commandHolder.getLabel(offsetLabel);
+                    offset = labelNumber - currentCommandNumber;
+                    splitedCode[3] = parseInt(offset);
+                }
                 return cStart[code] + convertSTOff(splitedCode);
                 break;
             //Target Group
