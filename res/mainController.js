@@ -215,9 +215,12 @@ app.controller ("testController" , function($scope, $http) {
 
 	};
 	$scope.runConvert = function () {
-		for(var i=0; i<$scope.commandsCount; i++){
+		/*for(var i=0; i<$scope.commandsCount; i++){
 			demoCPU.nextCommand();
-		}
+		}*/
+        while (!demoCPU.isEnd()){
+            demoCPU.nextCommand();
+        }
 		$scope.commandsCount = 0;
 		console.log("состояние регистров под конец работы:");
 		console.log(demoCPU.register.registerMap);

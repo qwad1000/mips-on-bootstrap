@@ -98,7 +98,7 @@ function initCommandRamHolder() {
     };
     commandRamHolder.addLabel = function (label) {
         console.log(this.commandCodeList.length+" з міткою "+label);
-        this.labels[label] = this.commandCodeList.length;
+        this.labels[label] = this.commandCodeList.length - 1;
     };
     commandRamHolder.getLabel = function (label) {
         console.log("Знаходимо мітку " + label);
@@ -111,6 +111,9 @@ function initCommandRamHolder() {
         this.commandCodeList = [];
         this.labels = [];
         this.PC = 0;
+    };
+    commandRamHolder.isEnd = function () {
+        return this.PC == this.commandCodeList.length;
     };
     return commandRamHolder;
 }
@@ -234,7 +237,7 @@ function convertST(splitedCode) {
 function convertSTOff(splitedCode) {
     return DexToFillBin(getRegisterCode(splitedCode[1]), 5)
         + DexToFillBin(getRegisterCode(splitedCode[2]), 5)
-        + DexToFillComplementBin(getRegisterCode(splitedCode[3]), 16);
+        + DexToFillComplementBin(splitedCode[3], 16);
 }
 //TargetGroup=['j','jal']
 function convertTarget(splitedCode) {
@@ -296,7 +299,6 @@ function initCommandParser() {
                 return
             }
         }
-        var splitedCode = code.split(commandRegExp);
         /*splitedCode = splitedCode.filter(function (element) {
             var b = true;
             if (element.length < 2) {
@@ -306,7 +308,7 @@ function initCommandParser() {
             }
             return b;
         });*/
-        return splitedCode;
+        return code.split(commandRegExp);
     };
     commandParser.parse = function (splitedCode) {
         var code = splitedCode[0];
@@ -373,7 +375,11 @@ function initCommandParser() {
             //Target Group
             case 'j':
             case 'jal':
-                //TODO:відловлювання label
+                var targetLabel = splitedCode[1];
+                if (!numberRegExp.test(targetLabel)){
+                    labelNumber = this.commandHolder.getLabel(targetLabel);
+                    splitedCode[1] = labelNumber;
+                }
                 return cStart[code] + convertTarget(splitedCode);
                 break;
             //TOffS Group
@@ -429,6 +435,9 @@ function initDemoCPU() {
     demoCPU.nextCommand = function () {
         this.alu.calculate(this.commandParser.commandHolder.getCurrent());
     };
+    demoCPU.isEnd = function() {
+        return this.commandParser.commandHolder.isEnd();
+    };
     demoCPU.command = function (command) {
         var splitedCode = this.commandParser.createCommand(command);
         var bCode = this.commandParser.parse(splitedCode);
@@ -457,6 +466,7 @@ function initALU(registerHolder, ramHolder, commandRamHolder) {
     var zeroStartArray = initZeroStartArray();
     var hardArray = initHardArray();
     var accArray = initAccArray();
+    var elseZeroArray = initElseZeroArray();
     alu.hi = 0;
     alu.lo = 0;
     alu.calculate = function (b) {
@@ -471,7 +481,7 @@ function initALU(registerHolder, ramHolder, commandRamHolder) {
                     console.log(end);
                     accArray[end](b, registerHolder, alu);
                 } else {
-
+                    elseZeroArray[end](b,registerHolder, ramHolder, commandRamHolder);
                 }
             }
         } else {
@@ -589,6 +599,16 @@ function initAccArray() {
     return arr;
 }
 
+function initElseZeroArray(){
+    var arr = [];
+    //jr
+    arr['001000'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getST(b);
+        commandRamHolder.PC = registerHolder.get(values[0]);
+    };
+    return arr;
+}
+
 function initHardArray() {
     var arr = [];
     //addi
@@ -640,7 +660,73 @@ function initHardArray() {
         registerHolder.set(values[0],
             ramHolder.getDexWord(values[2]+registerHolder.get(values[1])));
     };
+    //j
+    arr['000010'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        commandRamHolder.PC = getTarget(b);
+    };
+    //jal
+    arr['000011'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        registerHolder.set(31,commandRamHolder.PC);
+        commandRamHolder.PC = getTarget(b);
+    };
+    //beq
+    arr['000100'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getSTImm(b);
+        console.log(registerHolder.registerMap);
+        if (registerHolder.get(values[0]) == registerHolder.get(values[1])){
+            commandRamHolder.PC +=values[2];
+        }
+    };
+    //bne
+    arr['000101'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getSTImm(b);
+        console.log(registerHolder.registerMap);
+        if (registerHolder.get(values[0]) != registerHolder.get(values[1])){
+            commandRamHolder.PC +=values[2];
+        }
+    };
+    //blez
+    arr['000110'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getSTImm(b);
+        console.log(registerHolder.registerMap);
+        if (registerHolder.get(values[0]) <= 0){
+            commandRamHolder.PC +=values[2];
+        }
+    };
+    //bgtz
+    arr['000111'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getSTImm(b);
+        console.log(registerHolder.registerMap);
+        if (registerHolder.get(values[0]) >= 0){
+            commandRamHolder.PC +=values[2];
+        }
+    };
+    //bgez,bgezal,bltz,bltzal
+    arr['000001'] = function (b,registerHolder, ramHolder, commandRamHolder){
+        var values = getSTImm(b);
+        var flags = DexToFillBin(values[1],5);
+        if (flags[0]=='1'){
+            registerHolder.set(31,commandRamHolder.PC);
+        }
+        var makeShift = false;
+        if (flags[4]=='1'){//Перевіряє, чи більше за нуль
+            makeShift = registerHolder.get(values[0])>0;
+        } else {//Чи менше за нуль
+            makeShift = registerHolder.get(values[0])<0;
+        }
+        if (makeShift){
+            commandRamHolder.PC+=values[2];
+        }
+    };
     return arr;
+}
+/**
+ *
+ * @param {String} b
+ * @returns {Number} target
+ */
+function getTarget(b){
+   return BinToDex(b.substring(6));
 }
 
 /**
