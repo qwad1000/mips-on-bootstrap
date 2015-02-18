@@ -75,11 +75,11 @@ app.controller ("testController" , function($scope, $http) {
 	$scope.codeArea = "";
 	$scope.registers = demoCPU.register.registerMap;
 	$scope.ram = demoCPU.ram;
-	//$scope.programCounter = demoCPU.commandParser.commandHolder.PC;
 	$scope.registersName = registersName;
 	$scope.resultArea = "";
 	$scope.isEditing = true;
 	$scope.loadBtnText = "Assemble & Load to CPU";
+	$scope.limits = limits;
 
 	
 	$scope.hexRegFmt = 'hex';

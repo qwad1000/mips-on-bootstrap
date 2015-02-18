@@ -40,5 +40,7 @@ registersName = ['zero','at','v0','v1','a0','a1','a2','a3','t0','t1','t2','t3','
 limits = {
     bits : 32,
     wordSize : 32,
-    byteSize : 8
+    byteSize : 8,
+
+    maxTicks : 3000
 };

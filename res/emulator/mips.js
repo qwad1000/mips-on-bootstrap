@@ -500,7 +500,7 @@ function initZeroStartArray() {
             registerHolder.get(values[1]) + registerHolder.get(values[2]));
     };
     //addu
-    arr["100001"] = function (b, registerHolder) {
+    arr["100001"] = function (b, registerHolder) { //fixme unsigned no overflow
         var values = getDST(b);
         registerHolder.set(values[0],
             registerHolder.get(values[1]) + registerHolder.get(values[2]));
@@ -578,7 +578,7 @@ function initAccArray() {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 64); //fixme: s*t will be 64bit  ????
+        var mult = DexToFillBin(s * t, 64);
         var mult1 = mult.substring(0, 32);
         var mult2 = mult.substring(32);
         alu.lo = BinToDex(mult2);
@@ -589,7 +589,7 @@ function initAccArray() {
         var values = getST(b);
         var s = registerHolder.get(values[0]);
         var t = registerHolder.get(values[1]);
-        var mult = DexToFillBin(s * t, 64); //fixme: s*t will be 64bit ???
+        var mult = DexToFillBin(s * t, 64);
         var mult1 = mult.substring(0, 32);
         var mult2 = mult.substring(32);
         alu.lo = BinToDex(mult2);

@@ -21,25 +21,53 @@
 	<div class="page-wrapper container-fluid">
 		<div class="row main-part-wrapper">
 			<div class="col-sm-4 column">
-				<button type="button" class="btn btn-success btn-block btn-sm" ng-click="loadInfo()">[$ loadBtnText $]</button>
+				<div class="btn-group-sm">
+					<button type="button" class="btn btn-success btn-sm" ng-click="loadInfo()">[$ loadBtnText $]</button>
+					<button type="button" class="btn btn-sm"
+							data-toggle="collapse" data-target="#collapsePrefs"
+							aria-expanded="false" aria-controls="collapsePrefs">
+						<span class="glyphicon glyphicon-cog"></span>
+					</button>
+				</div>
+				<div class="collapse" id="collapsePrefs">
+					<div class="panel panel-default">
+						<div class="panel-heading">Preferences</div>
+						<table class="table table-hovered">
+							<tr>
+								<td>
+									MAX TICKS
+								</td>
+								<td>
+									<input type="number" ng-model="limits.maxTicks">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div class="editor-wrapper">
 					<div id="editor" class="code-editor" ng-model="codeArea"></div>
 				</div>
 				<div class="btn-group-sm btn-group-justified" ng-hide="isEditing">
-					<a type="button" class="btn btn-primary" ng-click="runConvert()" ng-disabled="commandsCount==0">Run</a>
-					<a type="button" class="btn btn-default" ng-click="runStep()" ng-disabled="commandsCount==0">Step</a>
-					<a type="button" class="btn btn-danger" ng-click="reset()">Reset</a>
+					<a type="button" class="btn btn-primary" ng-click="runConvert()" ng-disabled="commandsCount==0">
+						<span class="glyphicon glyphicon-play"></span> Run
+					</a>
+					<a type="button" class="btn btn-default" ng-click="runStep()" ng-disabled="commandsCount==0">
+						<span class="glyphicon glyphicon-step-forward"></span>
+						Step
+					</a>
+					<a type="button" class="btn btn-danger" ng-click="reset()">
+						<span class="glyphicon glyphicon-remove-sign"></span>
+						Reset
+					</a>
 					<div class="btn-group">
 						<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-							Initial state <span class="caret"></span>
+							Tests <span class="caret"></span>
 						</button>
-						<ul class="dropdown-menu" role="menu" >
-							<li><a href="#">No test</a></li>
-							<li class="divider"></li>
+						<ul class="dropdown-menu" role="menu">
 							<li ng-repeat="val in exercise.tests">
 								<button class="btn" ng-click="testClick(val.id)">
-								<span class="glyphicon glyphicon-ok" ng-show="val.passed"></span>
-								<span class="glyphicon glyphicon-remove" ng-hide="val.passed || val.passed == undefined"></span>
+									<span class="glyphicon glyphicon-ok" ng-show="val.passed"></span>
+									<span class="glyphicon glyphicon-remove" ng-hide="val.passed || val.passed == undefined"></span>
 								 [$val.title$]</button>
 							</li>
 						</ul>
@@ -146,6 +174,10 @@
 	<script src="res/emulator/mips_constants.js"></script>
 	<script src="res/emulator/utility.js"></script>
 	<script src="res/mainController.js"></script>
-	
+
+	<script>
+
+
+	</script>
 </body>
 </html>
