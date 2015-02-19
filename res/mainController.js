@@ -69,7 +69,7 @@ var exercisePath = "vars1.json";
 
 
 
-app.controller ("testController" , function($scope, $http) {
+app.controller ("testController", function($scope, $http) {
 	var demoCPU = initDemoCPU();
 	var commandRegex = new RegExp("(add|addi|addiu|addu|and|andi|beq|bgez|bgezal|bgtz|blez|bltz|bltzal|bne|div|divu|j|jal|jr|lb|lui|lw|mfhi|mflo|mult|multu|noop|or|ori|sb|sll|sllv|slt|sltu|sltiu|sra|srl|srlv|sub|subu|sw|xor|xori)(\\s([+-]?0x[1-9A-F]+|[+-]?[1-9]+|(\\$(30|31|[1-2]?[0-9]|t[0-9]|s[0-8]|ra|zero|at|v[0-1]|a[0-3]|k0|k1|gp|sp)))){1,3}");
 	$scope.codeArea = "";
