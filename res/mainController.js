@@ -178,33 +178,44 @@ app.controller ("testController", function($scope, $http) {
 
 	$scope.loadInfo = function (){
 		if($scope.isEditing){
-			$scope.isEditing = false;
-			$scope.loadBtnText = "Return to code editor";
-			editor.setReadOnly(true);
-			$scope.resultArea = "";
 			$scope.codeArea = editor.getValue();
 			var operations_list = $scope.codeArea.split('\n');
 			$scope.commandsCount = 0;
 
-			for(var i=0; i<operations_list.length; i++){
-				var value = operations_list[i].trim();
-				if(value.length > 0){
-					/*var indexOf = value.indexOf(":");
-					if (indexOf != -1) {//todo:wtf??
-						var label = value.substring(0, indexOf);
-						demoCPU.commandParser.commandHolder.addLabel(label);
-						var command = value.substring(indexOf + 1);
-						if (command.length > 0) {
-							value = command;
-						} else {
-							return;
-						}
-					}*/
-					var binResult = demoCPU.command(value);
-					$scope.commandsCount++;
-					$scope.resultArea += BinToViewBin(binResult) + "\n";
-				}
-			}
+            for (var i=0;i<operations_list.length;i++){
+                var value = operations_list[i].trim();
+                if (value.indexOf(":")>-1){
+                    var splited = value.split(":");
+                    operations_list[i] = splited[1];
+                    demoCPU.commandParser.commandHolder.setLabel(splited[0],i-1);
+                }
+            }
+
+            var isVerificated = true;
+            for (i=0;i<operations_list.length;i++){
+                value = operations_list[i].trim();
+                if (!verificate(value,demoCPU.commandParser.commandHolder)){
+                    alert("У вас помилка. Рядок №"+(i+1));
+                    demoCPU.commandParser.commandHolder.clear();
+                    isVerificated = false;
+                    break;
+                }
+            }
+
+            if (isVerificated) {
+                for (i = 0; i < operations_list.length; i++) {
+                    value = operations_list[i].trim();
+                    if (value.length > 0) {
+                        var binResult = demoCPU.command(value);
+                        $scope.commandsCount++;
+                        $scope.resultArea += BinToViewBin(binResult) + "\n";
+                    }
+                }
+                $scope.isEditing = false;
+                $scope.loadBtnText = "Return to code editor";
+                editor.setReadOnly(true);
+                $scope.resultArea = "";
+            }
 		}else{
 			$scope.isEditing = true;
 			$scope.loadBtnText = "Assemble & Load to CPU";
@@ -218,8 +229,13 @@ app.controller ("testController", function($scope, $http) {
 		/*for(var i=0; i<$scope.commandsCount; i++){
 			demoCPU.nextCommand();
 		}*/
-        while (!demoCPU.isEnd()){
+        var i = 0;
+        while (!demoCPU.isEnd() && i<$scope.limits.maxTicks){
             demoCPU.nextCommand();
+            i++;
+        }
+        if (i==$scope.limits.maxTicks){
+            alert("Забагато ітерацій. Збільшіть ліміт");
         }
 		$scope.commandsCount = 0;
 		console.log("состояние регистров под конец работы:");

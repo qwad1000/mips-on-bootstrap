@@ -49,6 +49,7 @@ function BinToDex(b){
  * @return {String}
  */
 function DexToFillBin(d,count){
+    console.log(d);
     if(typeof d == "string"){
         d = parseInt(d,10);
     }
@@ -174,7 +175,8 @@ function HexToFillHex(h, count){ //test
  * @return {string}
  */
 function BinToHex(b) {
-    var h = "";
+    return parseInt(b,2).toString(16);
+    /*var h = "";
 
     if(b.length % 4 !== 0){
         b = generateString(4 - b.length % 4, '0') + b;
@@ -186,5 +188,9 @@ function BinToHex(b) {
         var d = BinToDex(bslice);
         h = DexToHex(d) + h;
     }
-    return h;
+    return h;*/
+}
+
+function test(b){
+
 }
