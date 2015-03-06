@@ -2,10 +2,7 @@ var app = angular.module("MIPS-app",[]);
 
 var editor = ace.edit("editor");
 editor.getSession().setMode("ace/mode/mips");
-editor.setValue("addi $t3 $zero 255\n\
-addi $t2 $zero 0x1A\n\
-sw $t3 0($t2)\n\
-lw $t4 1($t2)");
+editor.setValue("#Це просто кусок коментаря");
 editor.gotoLine(0);
 
 app.config(function($interpolateProvider) {
@@ -68,6 +65,10 @@ var exerciseVar = 0;
 var exercisePath = "vars1.json";
 
 
+
+function isNotCommentLine(line){
+    return !line.startsWith("#");
+}
 
 app.controller ("testController", function($scope, $http) {
 	var demoCPU = initDemoCPU();
@@ -179,8 +180,10 @@ app.controller ("testController", function($scope, $http) {
 	$scope.loadInfo = function (){
 		if($scope.isEditing){
 			$scope.codeArea = editor.getValue();
-			var operations_list = $scope.codeArea.split('\n');
+			var operations_list = $scope.codeArea.split('\n').filter(isNotCommentLine);
 			$scope.commandsCount = 0;
+
+
 
             for (var i=0;i<operations_list.length;i++){
                 var value = operations_list[i].trim();
